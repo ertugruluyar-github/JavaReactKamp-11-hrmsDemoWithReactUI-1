@@ -11,7 +11,7 @@ export default function LeftSideBar() {
           content="Home"
           position="right center"
           trigger={
-            <Menu.Item key={0} as={NavLink} to="/home" icon="home" active />
+            <Menu.Item key={0} as={NavLink} to="/home" icon="home" />
           }
         />
         <Popup

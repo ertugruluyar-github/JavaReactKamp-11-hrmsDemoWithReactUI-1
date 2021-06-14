@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Grid, Image, Segment } from "semantic-ui-react";
 
-import CurriculumVitaeService from "../../services/curriculumVitaeService";
 import PersonalInfo from "./components/PersonalInfo";
 import SocialMediaList from "./components/SocialMediaList";
 import TabPanes from "./components/TabPanes";
 
-export default function CurriculumVitaeDetailView() {
-  const [currentCurriculumVitae, setCurrentCurriculumVitae] = useState({});
-  useEffect(() => {
-    let curriculumVitaeService = new CurriculumVitaeService();
-    curriculumVitaeService
-      .getCurriculumVitaes()
-      .then((result) => setCurrentCurriculumVitae(result.data.data[0]));
-  }, []);
-
+export default function CurriculumVitaeDetailView({ currentCurriculumVitae }) {
   return (
     <div>
       <Segment raised piled padded>
@@ -44,7 +35,7 @@ export default function CurriculumVitaeDetailView() {
           <Grid.Row>
             <Grid.Column width={16}>
               <Segment raised padded textAlign="left">
-                <p>{currentCurriculumVitae.description}</p>
+                <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{currentCurriculumVitae.description}</p>
               </Segment>
             </Grid.Column>
           </Grid.Row>

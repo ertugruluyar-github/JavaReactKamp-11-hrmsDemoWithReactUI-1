@@ -21,7 +21,7 @@ export default function CurriculumVitaeInfo({ curriculumVitae }) {
       </Segment>
 
       <Card.Description textAlign="left">
-        <p>{curriculumVitae.description}</p>
+        <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{curriculumVitae.description}</p>
       </Card.Description>
     </>
   );

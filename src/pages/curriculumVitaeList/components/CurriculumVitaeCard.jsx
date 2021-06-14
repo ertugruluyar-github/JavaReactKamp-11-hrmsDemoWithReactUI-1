@@ -11,7 +11,7 @@ export default function CurriculumVitaeCard({ curriculumVitae }) {
       </Card.Content>
 
       <Card.Content extra>
-        <CurriculumVitaeButtonGroup />
+        <CurriculumVitaeButtonGroup curriculumVitae={curriculumVitae} />
       </Card.Content>
     </Card>
   );
