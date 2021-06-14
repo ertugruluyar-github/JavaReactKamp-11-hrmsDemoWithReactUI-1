@@ -1,8 +1,8 @@
 import React from "react";
+import { Button, Icon } from 'semantic-ui-react';
 
 export default function CurriculumVitaeButtonGroup() {
   return (
-    <div>
       <Button.Group fluid>
         <Button color="blue" animated="fade">
           <Button.Content visible>
@@ -25,6 +25,5 @@ export default function CurriculumVitaeButtonGroup() {
           <Button.Content hidden>Delete</Button.Content>
         </Button>
       </Button.Group>
-    </div>
   );
 }
