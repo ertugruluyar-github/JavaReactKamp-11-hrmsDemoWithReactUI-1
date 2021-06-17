@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form } from "semantic-ui-react";
 import EmployeePositionService from "../../../services/employeePositionService";
 
-export default function EmployeePositionFormSelect({
+export default function EmployeePositionFormSelect2({
   handleChange,
   onBlur,
   value,
@@ -33,7 +33,7 @@ export default function EmployeePositionFormSelect({
       search
       selection
       options={employeePositionOptions}
-      onChange={(event, data) => handleChange(data.value, "employeePosition.id")}
+      onChange={(event, data) => handleChange(data.value, "employeePositionId")}
       onBlur={onBlur}
       value={value}
       error={error}

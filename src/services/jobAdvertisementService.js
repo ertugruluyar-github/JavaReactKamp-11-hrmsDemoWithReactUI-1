@@ -34,57 +34,10 @@ export default class JobAdvertisementService {
   }
 
   addJobAdvertisement(jobAdvertisement) {
-    console.log(jobAdvertisement);
-    console.log(
-      JSON.stringify({
-        description: jobAdvertisement.description,
-        minSalary: jobAdvertisement.minSalary,
-        maxSalary: jobAdvertisement.maxSalary,
-        numberOfOpenPosition: jobAdvertisement.numberOfPosition,
-        applicationDeadline: jobAdvertisement.applicationDeadline,
-        active: jobAdvertisement.active,
-        employeePosition: {
-          id: jobAdvertisement.employeePositionId,
-        },
-        city: {
-          id: jobAdvertisement.cityId,
-        },
-        employer: {
-          id: jobAdvertisement.employerId,
-        },
-        workingPlaceType: {
-          id: jobAdvertisement.workingPlaceTypeId,
-        },
-        workingTimeType: {
-          id: jobAdvertisement.workingTimeTypeId,
-        },
-      })
-    );
+    console.log(JSON.stringify(jobAdvertisement));
     return axios.post(
       this.currenthost + "/api/jobadvertisements/add",
-      JSON.stringify({
-        description: jobAdvertisement.description,
-        minSalary: jobAdvertisement.minSalary,
-        maxSalary: jobAdvertisement.maxSalary,
-        numberOfOpenPosition: jobAdvertisement.numberOfPosition,
-        applicationDeadline: jobAdvertisement.applicationDeadline,
-        active: jobAdvertisement.active,
-        employeePosition: {
-          id: jobAdvertisement.employeePositionId,
-        },
-        city: {
-          id: jobAdvertisement.cityId,
-        },
-        employer: {
-          id: jobAdvertisement.employerId,
-        },
-        workingPlaceType: {
-          id: jobAdvertisement.workingPlaceTypeId,
-        },
-        workingTimeType: {
-          id: jobAdvertisement.workingTimeTypeId,
-        },
-      }),
+      JSON.stringify(jobAdvertisement),
       {
         headers: {
           "Content-Type": "application/json",

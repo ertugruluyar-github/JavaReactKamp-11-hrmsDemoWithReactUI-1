@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import WorkingPlaceTypeSevice from "../../../services/workingPlaceTypeService";
 import { Form } from 'semantic-ui-react';
 
-export default function WorkingPlaceTypeFormSelect({ handleChange, onBlur, value, error }) {
+export default function WorkingPlaceTypeFormSelect2({ handleChange, onBlur, value, error }) {
   const [workingPlaceTypes, setWorkingPlaceTypes] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function WorkingPlaceTypeFormSelect({ handleChange, onBlur, value
       search
       selection
       options={workingingPlaceTypeOptions}
-      onChange={(event, data) => handleChange(data.value, "workingPlaceType.id")}
+      onChange={(event, data) => handleChange(data.value, "workingPlaceTypeId")}
       onBlur={onBlur}
       value={value}
       error={error}

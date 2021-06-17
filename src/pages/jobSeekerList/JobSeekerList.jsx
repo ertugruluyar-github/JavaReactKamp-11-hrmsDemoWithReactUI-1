@@ -24,7 +24,7 @@ export default function JobSeekerList() {
         />
         <Table verticalAlign="middle" padded celled>
           <Table.Header>
-            <Table.Row>
+            <Table.Row textAlign="center">
               <Table.HeaderCell>First Name</Table.HeaderCell>
               <Table.HeaderCell>Last Name</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
@@ -36,7 +36,7 @@ export default function JobSeekerList() {
 
           <Table.Body>
             {jobSeekers.map((jobSeeker) => (
-              <Table.Row key={jobSeeker.id}>
+              <Table.Row textAlign="center" key={jobSeeker.id}>
                 <Table.Cell>{jobSeeker.firstName}</Table.Cell>
                 <Table.Cell>{jobSeeker.lastName}</Table.Cell>
                 <Table.Cell>{jobSeeker.email}</Table.Cell>

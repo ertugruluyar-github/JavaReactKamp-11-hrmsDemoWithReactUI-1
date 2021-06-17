@@ -24,7 +24,7 @@ export default function ActiveJobAdvertisementList() {
         />
         <Table verticalAlign="middle" padded celled>
           <Table.Header>
-            <Table.Row>
+            <Table.Row textAlign="center">
               <Table.HeaderCell>Company Name</Table.HeaderCell>
               <Table.HeaderCell>Employee Position</Table.HeaderCell>
               <Table.HeaderCell>Number Of Position</Table.HeaderCell>
@@ -37,7 +37,7 @@ export default function ActiveJobAdvertisementList() {
 
           <Table.Body>
             {activeJobAdvertisements.map((activeJobAdvertisement) => (
-              <Table.Row key={activeJobAdvertisement.id}>
+              <Table.Row textAlign="center" key={activeJobAdvertisement.id}>
                 <Table.Cell>
                   {activeJobAdvertisement.employer.companyName}
                 </Table.Cell>
@@ -45,7 +45,7 @@ export default function ActiveJobAdvertisementList() {
                   {activeJobAdvertisement.employeePosition.positionName}
                 </Table.Cell>
                 <Table.Cell>
-                  {activeJobAdvertisement.numberOfOpenPosition}
+                  {activeJobAdvertisement.numberOfPosition}
                 </Table.Cell>
                 <Table.Cell>{activeJobAdvertisement.releaseDate}</Table.Cell>
                 <Table.Cell>

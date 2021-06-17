@@ -3,18 +3,18 @@ import { useFormik } from "formik";
 import { Segment, Form, Divider, Header } from "semantic-ui-react";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
-import JobAdvertisementService from "../../services/jobAdvertisementService";
-import WorkingPlaceTypeFormSelect from "./components/WorkingPlaceTypeFormSelect";
-import WorkingTimeTypeFormSelect from "./components/WorkingTimeTypeFormSelect";
-import CityFormSelect from "./components/CityFormSelect";
-import EmployeePositionFormSelect from "./components/EmployeePositionFormSelect";
+import JobAdvertisementService2 from "../../services/jobAdvertisementService2";
+import WorkingPlaceTypeFormSelect2 from "./components/WorkingPlaceTypeFormSelect2";
+import WorkingTimeTypeFormSelect2 from "./components/WorkingTimeTypeFormSelect2";
+import CityFormSelect2 from "./components/CityFormSelect2";
+import EmployeePositionFormSelect2 from "./components/EmployeePositionFormSelect2";
 
-export default function JobAdvertisementAddForm() {
-  let jobAdvertisementService = new JobAdvertisementService();
+export default function JobAdvertisementAddForm2() {
+  let jobAdvertisementService2 = new JobAdvertisementService2();
   const history = useHistory();
 
   let addJobAdvertisements = (values) => {
-    jobAdvertisementService.addJobAdvertisement(values).then((response) => {
+    jobAdvertisementService2.addJobAdvertisement(values).then((response) => {
       if (response.status === 200) {
         alert(
           "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal."
@@ -36,16 +36,10 @@ export default function JobAdvertisementAddForm() {
       .required("Required")
       .min(1, "Number of positions must be positive."),
     applicationDeadline: Yup.date().required("Required"),
-    employeePosition: Yup.object().shape({
-      id: Yup.number().required("Required"),
-    }),
-    city: Yup.object().shape({ id: Yup.number().required("Required") }),
-    workingPlaceType: Yup.object().shape({
-      id: Yup.number().required("Required"),
-    }),
-    workingTimeType: Yup.object().shape({
-      id: Yup.number().required("Required"),
-    }),
+    employeePositionId: Yup.number().required("Required"),
+    cityId: Yup.number().required("Required"),
+    workingPlaceTypeId: Yup.number().required("Required"),
+    workingTimeTypeId: Yup.number().required("Required"),
     active: Yup.bool().required("Required"),
   });
 
@@ -56,16 +50,15 @@ export default function JobAdvertisementAddForm() {
       maxSalary: "",
       numberOfPosition: "",
       applicationDeadline: "",
-      employeePosition: {},
-      city: {},
-      workingPlaceType: {},
-      workingTimeType: {},
-      employer: {},
+      employeePositionId: "",
+      cityId: "",
+      workingPlaceTypeId: "",
+      workingTimeTypeId: "",
       active: true,
     },
     validationSchema: ValidationSchema,
     onSubmit: (values) => {
-      values.employer.id = 1;
+      values.employerId = 1;
       console.log(values);
       addJobAdvertisements(values);
       history.push("/activejobadvertisements");
@@ -83,7 +76,7 @@ export default function JobAdvertisementAddForm() {
           dividing
           color="blue"
           icon="bullhorn"
-          content="New Job Advertisement"
+          content="New Job Advertisement #2"
         />
         <Form onSubmit={formik.handleSubmit}>
           <Form.TextArea
@@ -149,29 +142,29 @@ export default function JobAdvertisementAddForm() {
           </Form.Group>
           <Divider />
           <Form.Group>
-            <EmployeePositionFormSelect
+            <EmployeePositionFormSelect2
               handleChange={handleChange}
               onBlur={formik.onBlur}
-              value={formik.values.employeePosition.id}
-              error={formik.errors.employeePosition?.id}
+              value={formik.values.employeePositionId}
+              error={formik.errors.employeePositionId}
             />
-            <CityFormSelect
+            <CityFormSelect2
               handleChange={handleChange}
               onBlur={formik.onBlur}
-              value={formik.values.city.id}
-              error={formik.errors.city?.id}
+              value={formik.values.cityId}
+              error={formik.errors.cityId}
             />
-            <WorkingPlaceTypeFormSelect
+            <WorkingPlaceTypeFormSelect2
               handleChange={handleChange}
               onBlur={formik.onBlur}
-              value={formik.values.workingPlaceType.id}
-              error={formik.errors.workingPlaceType?.id}
+              value={formik.values.workingPlaceTypeId}
+              error={formik.errors.workingPlaceTypeId}
             />
-            <WorkingTimeTypeFormSelect
+            <WorkingTimeTypeFormSelect2
               handleChange={handleChange}
               onBlur={formik.onBlur}
-              value={formik.values.workingTimeType.id}
-              error={formik.errors.workingTimeType?.id}
+              value={formik.values.workingTimeTypeId}
+              error={formik.errors.workingTimeTypeId}
             />
           </Form.Group>
           <Divider />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import WorkingTimeTypeSevice from "../../../services/workingTimeTypeSevice";
 import { Form } from 'semantic-ui-react';
 
-export default function WorkingingTimeTypeFormSelect({ handleChange, onBlur, value, error }) {
+export default function WorkingingTimeTypeFormSelect2({ handleChange, onBlur, value, error }) {
   const [workingTimeTypes, setWorkingTimeTypes] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function WorkingingTimeTypeFormSelect({ handleChange, onBlur, val
       search
       selection
       options={workingTimeTypeOptions}
-      onChange={(event, data) => handleChange(data.value, "workingTimeType.id")}
+      onChange={(event, data) => handleChange(data.value, "workingTimeTypeId")}
       onBlur={onBlur}
       value={value}
       error={error}
