@@ -16,6 +16,7 @@ export default function EmployerList() {
     <div>
       <Segment raised padded>
         <Header
+          dividing
           color="blue"
           textAlign="right"
           icon="building"

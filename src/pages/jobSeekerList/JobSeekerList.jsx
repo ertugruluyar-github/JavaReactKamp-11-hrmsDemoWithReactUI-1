@@ -16,6 +16,7 @@ export default function JobSeekerList() {
     <div>
       <Segment raised padded>
         <Header
+          dividing
           color="blue"
           textAlign="right"
           icon="handshake"
