@@ -9,7 +9,7 @@ export default function NavBar() {
 
   useEffect(() => {
     setisAuthenticated(true);
-  }, []);
+  }, []); 
 
   return (
     <div>
