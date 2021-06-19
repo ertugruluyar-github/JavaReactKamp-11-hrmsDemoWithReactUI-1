@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Segment, Form, Divider, Header } from "semantic-ui-react";
+import { Segment, Form, Divider, Header, Button, Icon } from "semantic-ui-react";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import JobAdvertisementService from "../../services/jobAdvertisementService";
@@ -8,17 +8,21 @@ import WorkingPlaceTypeFormSelect from "./components/WorkingPlaceTypeFormSelect"
 import WorkingTimeTypeFormSelect from "./components/WorkingTimeTypeFormSelect";
 import CityFormSelect from "./components/CityFormSelect";
 import EmployeePositionFormSelect from "./components/EmployeePositionFormSelect";
+import { useDispatch } from "react-redux";
+import { addToMyJobAdvertisements } from "../../store/actions/myJobAdvertisementsActions";
 
 export default function JobAdvertisementAddForm() {
   let jobAdvertisementService = new JobAdvertisementService();
   const history = useHistory();
 
+  const dispatch = useDispatch()
+
   let addJobAdvertisements = (values) => {
     jobAdvertisementService.addJobAdvertisement(values).then((response) => {
       if (response.status === 200) {
         alert(
-          "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal."
-          + "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
+          "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +
+            "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
         );
       }
     });
@@ -68,6 +72,7 @@ export default function JobAdvertisementAddForm() {
       values.employer.id = 1;
       console.log(values);
       addJobAdvertisements(values);
+      handleAddToMyJobAdvertisement(values);
       history.push("/activejobadvertisements");
     },
   });
@@ -75,6 +80,10 @@ export default function JobAdvertisementAddForm() {
   const handleChange = (fieldValue, fieldName) => {
     formik.setFieldValue(fieldName, fieldValue);
   };
+
+  const handleAddToMyJobAdvertisement = (jobAdvertisement) => {
+    dispatch(addToMyJobAdvertisements(jobAdvertisement))
+  }
 
   return (
     <div>
@@ -185,7 +194,12 @@ export default function JobAdvertisementAddForm() {
             checked={formik.values.active}
             error={formik.errors.active}
           ></Form.Checkbox>
-          <Form.Button type="submit">Add</Form.Button>
+          <Form.Button type="submit" animated="fade" inverted color="blue">
+            <Button.Content visible>Add</Button.Content>
+            <Button.Content hidden>
+              <Icon name="plus" />
+            </Button.Content>
+          </Form.Button>
         </Form>
       </Segment>
     </div>
