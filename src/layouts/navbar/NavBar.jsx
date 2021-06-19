@@ -5,10 +5,10 @@ import Search from "./components/Search";
 import SignInOrUpButtonGroup from "./components/SignInOrUpButtonGroup";
 
 export default function NavBar() {
-  const [isAuthenticated, setisAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    setisAuthenticated(true);
+    setIsAuthenticated(true);
   }, []); 
 
   return (
@@ -28,9 +28,9 @@ export default function NavBar() {
 
             <Menu.Item>
               {isAuthenticated ? (
-                <DropdownProfile />
+                <DropdownProfile setIsAuthenticated={setIsAuthenticated} />
               ) : (
-                <SignInOrUpButtonGroup />
+                <SignInOrUpButtonGroup setIsAuthenticated={setIsAuthenticated} />
               )}
             </Menu.Item>
           </Menu.Menu>

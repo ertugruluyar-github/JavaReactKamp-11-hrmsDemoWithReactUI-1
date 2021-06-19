@@ -2,11 +2,11 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { Icon } from 'semantic-ui-react';
 
-export default function SignInOrUpButtonGroup() {
+export default function SignInOrUpButtonGroup({ setIsAuthenticated }) {
     return (
         <div>
             <Button.Group>
-                <Button animated inverted>
+                <Button animated inverted onClick={() => setIsAuthenticated(true)}>
                   <Button.Content visible>Sign In</Button.Content>
                   <Button.Content hidden>
                     <Icon color="blue" name="sign in" />
