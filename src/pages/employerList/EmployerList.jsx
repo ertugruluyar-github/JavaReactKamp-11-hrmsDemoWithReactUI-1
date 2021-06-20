@@ -22,7 +22,7 @@ export default function EmployerList() {
           icon="building"
           content="Employer List"
         />
-        <Table verticalAlign="middle" padded celled>
+        <Table verticalAlign="middle" padded celled selectable>
           <Table.Header>
             <Table.Row textAlign="center">
               <Table.HeaderCell>Company Name</Table.HeaderCell>

@@ -22,7 +22,7 @@ export default function JobSeekerList() {
           icon="handshake"
           content="Job Seeker List"
         />
-        <Table verticalAlign="middle" padded celled>
+        <Table verticalAlign="middle" padded celled selectable>
           <Table.Header>
             <Table.Row textAlign="center">
               <Table.HeaderCell>First Name</Table.HeaderCell>

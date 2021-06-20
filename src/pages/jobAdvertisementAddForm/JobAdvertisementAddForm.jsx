@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Segment, Form, Divider, Header, Button, Icon } from "semantic-ui-react";
+import { Segment, Form, Header, Button, Icon } from "semantic-ui-react";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import JobAdvertisementService from "../../services/jobAdvertisementService";
@@ -10,17 +10,18 @@ import CityFormSelect from "./components/CityFormSelect";
 import EmployeePositionFormSelect from "./components/EmployeePositionFormSelect";
 import { useDispatch } from "react-redux";
 import { addToMyJobAdvertisements } from "../../store/actions/myJobAdvertisementsActions";
+import { toast } from "react-toastify";
 
 export default function JobAdvertisementAddForm() {
   let jobAdvertisementService = new JobAdvertisementService();
   const history = useHistory();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   let addJobAdvertisements = (values) => {
     jobAdvertisementService.addJobAdvertisement(values).then((response) => {
       if (response.status === 200) {
-        alert(
+        toast.success(
           "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +
             "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
         );
@@ -82,8 +83,9 @@ export default function JobAdvertisementAddForm() {
   };
 
   const handleAddToMyJobAdvertisement = (jobAdvertisement) => {
-    dispatch(addToMyJobAdvertisements(jobAdvertisement))
-  }
+    dispatch(addToMyJobAdvertisements(jobAdvertisement));
+    toast.success("Added into your Job Advertisements");
+  };
 
   return (
     <div>
@@ -95,111 +97,119 @@ export default function JobAdvertisementAddForm() {
           content="New Job Advertisement"
         />
         <Form onSubmit={formik.handleSubmit}>
-          <Form.TextArea
-            id="description"
-            name="description"
-            label="Description"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.description}
-            error={formik.errors.description}
-            placeholder="Tell us your job advertisement description."
-          />
-          <Divider />
-          <Form.Group>
-            <Form.Input
-              id="minSalary"
-              name="minSalary"
-              label="Minimum Salary"
-              type="number"
+          <Segment padded raised>
+            <Form.TextArea
+              id="description"
+              name="description"
+              label="Description"
+              type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.minSalary}
-              error={formik.errors.minSalary}
-              placeholder="2000"
-              width={4}
+              value={formik.values.description}
+              error={formik.errors.description}
+              placeholder="Tell us your job advertisement description."
             />
-            <Form.Input
-              id="maxSalary"
-              name="maxSalary"
-              label="Maximum Salary"
-              type="number"
+          </Segment>
+          <Segment padded raised>
+            <Form.Group>
+              <Form.Input
+                id="minSalary"
+                name="minSalary"
+                label="Minimum Salary"
+                type="number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.minSalary}
+                error={formik.errors.minSalary}
+                placeholder="2000"
+                width={4}
+              />
+              <Form.Input
+                id="maxSalary"
+                name="maxSalary"
+                label="Maximum Salary"
+                type="number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.maxSalary}
+                error={formik.errors.maxSalary}
+                placeholder="4000"
+                width={4}
+              />
+              <Form.Input
+                id="numberOfPosition"
+                name="numberOfPosition"
+                label="Number of Position"
+                type="number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.numberOfPosition}
+                error={formik.errors.numberOfPosition}
+                placeholder="3"
+                width={4}
+              />
+              <Form.Input
+                id="applicationDeadline"
+                name="applicationDeadline"
+                label="Application Deadline"
+                type="date"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.applicationDeadline}
+                error={formik.errors.applicationDeadline}
+                placeholder="2021-03-24"
+                width={4}
+              />
+            </Form.Group>
+          </Segment>
+          <Segment padded raised>
+            <Form.Group>
+              <EmployeePositionFormSelect
+                handleChange={handleChange}
+                onBlur={formik.onBlur}
+                value={formik.values.employeePosition.id}
+                error={formik.errors.employeePosition?.id}
+              />
+              <CityFormSelect
+                handleChange={handleChange}
+                onBlur={formik.onBlur}
+                value={formik.values.city.id}
+                error={formik.errors.city?.id}
+              />
+              <WorkingPlaceTypeFormSelect
+                handleChange={handleChange}
+                onBlur={formik.onBlur}
+                value={formik.values.workingPlaceType.id}
+                error={formik.errors.workingPlaceType?.id}
+              />
+              <WorkingTimeTypeFormSelect
+                handleChange={handleChange}
+                onBlur={formik.onBlur}
+                value={formik.values.workingTimeType.id}
+                error={formik.errors.workingTimeType?.id}
+              />
+            </Form.Group>
+          </Segment>
+          <Segment basic>
+            <Form.Checkbox
+              id="active"
+              name="active"
+              label="Is active?"
+              slider
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.maxSalary}
-              error={formik.errors.maxSalary}
-              placeholder="4000"
-              width={4}
-            />
-            <Form.Input
-              id="numberOfPosition"
-              name="numberOfPosition"
-              label="Number of Position"
-              type="number"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.numberOfPosition}
-              error={formik.errors.numberOfPosition}
-              placeholder="3"
-              width={4}
-            />
-            <Form.Input
-              id="applicationDeadline"
-              name="applicationDeadline"
-              label="Application Deadline"
-              type="date"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.applicationDeadline}
-              error={formik.errors.applicationDeadline}
-              placeholder="2021-03-24"
-              width={4}
-            />
-          </Form.Group>
-          <Divider />
-          <Form.Group>
-            <EmployeePositionFormSelect
-              handleChange={handleChange}
-              onBlur={formik.onBlur}
-              value={formik.values.employeePosition.id}
-              error={formik.errors.employeePosition?.id}
-            />
-            <CityFormSelect
-              handleChange={handleChange}
-              onBlur={formik.onBlur}
-              value={formik.values.city.id}
-              error={formik.errors.city?.id}
-            />
-            <WorkingPlaceTypeFormSelect
-              handleChange={handleChange}
-              onBlur={formik.onBlur}
-              value={formik.values.workingPlaceType.id}
-              error={formik.errors.workingPlaceType?.id}
-            />
-            <WorkingTimeTypeFormSelect
-              handleChange={handleChange}
-              onBlur={formik.onBlur}
-              value={formik.values.workingTimeType.id}
-              error={formik.errors.workingTimeType?.id}
-            />
-          </Form.Group>
-          <Divider />
-          <Form.Checkbox
-            id="active"
-            name="active"
-            label="İs Active?"
-            slider
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            checked={formik.values.active}
-            error={formik.errors.active}
-          ></Form.Checkbox>
-          <Form.Button type="submit" animated="fade" inverted color="blue">
-            <Button.Content visible>Add</Button.Content>
-            <Button.Content hidden>
-              <Icon name="plus" />
-            </Button.Content>
-          </Form.Button>
+              checked={formik.values.active}
+              error={formik.errors.active}
+            ></Form.Checkbox>
+          </Segment>
+          <Segment basic>
+            <Form.Button type="submit" animated="fade" positive fluid>
+              <Button.Content visible>
+                <Icon name="save" />
+              </Button.Content>
+              <Button.Content hidden>Save</Button.Content>
+            </Form.Button>
+          </Segment>
         </Form>
       </Segment>
     </div>

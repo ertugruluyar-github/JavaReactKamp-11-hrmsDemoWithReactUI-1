@@ -22,7 +22,7 @@ export default function Search() {
 
   return (
     <div>
-      <Input type="text" placeholder="Search..." action>
+      <Input type="text" placeholder="Search..." action> 
         <input size={30} />
         <Select options={searchOptions} defaultValue="Job Advertisement" />
         <Button type="submit" animated="fade">

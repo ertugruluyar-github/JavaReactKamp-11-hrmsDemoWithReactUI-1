@@ -10,13 +10,15 @@ import ActiveJobAdvertisementListDashboard from "./layouts/dashboards/activeJobA
 import JobAdvertisementAddFormDashboard from "./layouts/dashboards/jobAdvertisementAddForm/JobAdvertisementAddFormDashboard";
 import CurriculumVitaeListDashboard from "./layouts/dashboards/curriculumVitaeList/CurriculumVitaeListDashboard";
 import CurriculumVitaeDetailViewDashboard from "./layouts/dashboards/curriculumVitaeDetailView/CurriculumVitaeDetailViewDashboard";
-import LeftSideBar from './layouts/sidebars/LeftSideBar';
+import LeftSideBar from "./layouts/sidebars/LeftSideBar";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
       <Container className="main">
+        <ToastContainer position="bottom-right" />
         <Grid>
           <Grid.Row>
             <Grid.Column width={2}>
