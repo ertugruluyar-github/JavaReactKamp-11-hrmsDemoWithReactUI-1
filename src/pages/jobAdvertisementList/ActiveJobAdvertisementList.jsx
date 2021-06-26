@@ -1,16 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { Header, Icon, Menu, Segment, Table } from "semantic-ui-react";
+import {
+  Header,
+  Icon,
+  Menu,
+  Segment,
+  Table,
+  Label,
+  Rating,
+} from "semantic-ui-react";
 import JobAdvertisementService from "./../../services/jobAdvertisementService";
+import JobSeekerService from "./../../services/jobSeekerService";
 
 export default function ActiveJobAdvertisementList() {
   const [activeJobAdvertisements, setActiveJobAdvertisements] = useState([]);
+  const [
+    currentFavouriteJobAdvertisements,
+    setCurrentFavouriteJobAdvertisements,
+  ] = useState([]);
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
+    let jobSeekerService = new JobSeekerService();
+
     jobAdvertisementService
       .getActivatedJobAdvertisements()
       .then((result) => setActiveJobAdvertisements(result.data.data));
+
+    jobSeekerService
+      .getJobSeeker(5)
+      .then((result) =>
+        setCurrentFavouriteJobAdvertisements(
+          result.data.data.favouriteJobAdvertisements
+        )
+      );
   }, []);
+
+  let handleLike = (jobAdvertisementId) => {
+    let jobSeekerService = new JobSeekerService();
+    if (
+      currentFavouriteJobAdvertisements.find((j) => j.id === jobAdvertisementId, null
+      ) == null
+    ) {
+      jobSeekerService.likeJobAdvertisement(jobAdvertisementId, 5);
+      console.log("1: " + jobAdvertisementId + " - " + 5);
+    } else {
+      jobSeekerService.dislikeJobAdvertisement(jobAdvertisementId, 5);
+      console.log("2: " + jobAdvertisementId + " - " + 5);
+    }
+  };
 
   return (
     <div>
@@ -37,25 +74,52 @@ export default function ActiveJobAdvertisementList() {
 
           <Table.Body>
             {activeJobAdvertisements.map((activeJobAdvertisement) => (
-              <Table.Row textAlign="center" key={activeJobAdvertisement.id}>
-                <Table.Cell>
+              <Table.Row
+                verticalAlign="middle"
+                textAlign="center"
+                key={activeJobAdvertisement.id}
+              >
+                <Table.Cell collapsing>
                   {activeJobAdvertisement.employer.companyName}
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell collapsing>
                   {activeJobAdvertisement.employeePosition.positionName}
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell collapsing>
                   {activeJobAdvertisement.numberOfPosition}
                 </Table.Cell>
-                <Table.Cell>{activeJobAdvertisement.releaseDate}</Table.Cell>
-                <Table.Cell>
+                <Table.Cell collapsing>
+                  {activeJobAdvertisement.releaseDate}
+                </Table.Cell>
+                <Table.Cell collapsing>
                   {activeJobAdvertisement.applicationDeadline}
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell collapsing>
                   {activeJobAdvertisement.workingPlaceType.type}
                 </Table.Cell>
-                <Table.Cell>
-                  {activeJobAdvertisement.workingTimeType.type}
+                <Table.Cell collapsing>
+                  <Segment basic>
+                    {activeJobAdvertisement.workingTimeType.type}
+                    <Label
+                      as="a"
+                      floating
+                      circular
+                      onClick={() => handleLike(activeJobAdvertisement.id)}
+                    >
+                      <Rating
+                        icon="heart"
+                        defaultRating={
+                          currentFavouriteJobAdvertisements.find(
+                            (j) => j.id === activeJobAdvertisement.id,
+                            null
+                          ) == null
+                            ? 0
+                            : 1
+                        }
+                        maxRating={1}
+                      />
+                    </Label>
+                  </Segment>
                 </Table.Cell>
               </Table.Row>
             ))}

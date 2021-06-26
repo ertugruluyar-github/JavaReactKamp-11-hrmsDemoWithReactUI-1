@@ -5,6 +5,10 @@ export default class JobAdvertisementService {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
+  getJobAdvertisement(id) {
+    return axios.get(this.currenthost + "/api/jobadvertisements/get?id=" + id);
+  }
+
   getActivatedJobAdvertisements() {
     return axios.get(
       this.currenthost + "/api/jobadvertisements/getallactivated"
