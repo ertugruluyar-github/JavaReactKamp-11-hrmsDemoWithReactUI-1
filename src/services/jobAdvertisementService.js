@@ -37,6 +37,16 @@ export default class JobAdvertisementService {
     );
   }
 
+  getAllByActivatedWithPageable(pageNumber, pageSize) {
+    return axios.get(
+      this.currenthost +
+        "/api/jobadvertisements/getallbyactivatedwithpageable?pageNumber=" +
+        pageNumber +
+        "&pageSize=" +
+        pageSize
+    );
+  }
+
   addJobAdvertisement(jobAdvertisement) {
     console.log(JSON.stringify(jobAdvertisement));
     return axios.post(

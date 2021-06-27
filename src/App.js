@@ -9,7 +9,6 @@ import JobSeekerListDashboard from "./layouts/dashboards/jobSeekerList/JobSeeker
 import ActiveJobAdvertisementListDashboard from "./layouts/dashboards/activeJobAdvertisementList/ActiveJobAdvertisementListDashboard";
 import JobAdvertisementAddFormDashboard from "./layouts/dashboards/jobAdvertisementAddForm/JobAdvertisementAddFormDashboard";
 import CurriculumVitaeListDashboard from "./layouts/dashboards/curriculumVitaeList/CurriculumVitaeListDashboard";
-import CurriculumVitaeDetailViewDashboard from "./layouts/dashboards/curriculumVitaeDetailView/CurriculumVitaeDetailViewDashboard";
 import LeftSideBar from "./layouts/sidebars/LeftSideBar";
 import { ToastContainer } from 'react-toastify';
 
@@ -44,12 +43,6 @@ function App() {
                 exact
                 path="/curriculumvitaelist"
                 component={CurriculumVitaeListDashboard}
-              />
-
-              <Route
-                exact
-                path="/curriculumvitae/:id"
-                component={CurriculumVitaeDetailViewDashboard}
               />
 
               <Route
