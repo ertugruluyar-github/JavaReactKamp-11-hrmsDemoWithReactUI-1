@@ -3,15 +3,17 @@ import { Card } from "semantic-ui-react";
 import CurriculumVitaeInfo from "./CurriculumVitaeInfo";
 import CurriculumVitaeButtonGroup from "./CurriculumVitaeButtonGroup";
 
-export default function CurriculumVitaeCard({ curriculumVitae }) {
+export default function CurriculumVitaeCard({ currentCurriculumVitae }) {
   return (
-    <Card key={curriculumVitae.id}>
+    <Card key={currentCurriculumVitae.id}>
       <Card.Content>
-        <CurriculumVitaeInfo curriculumVitae={curriculumVitae} />
+        <CurriculumVitaeInfo currentCurriculumVitae={currentCurriculumVitae} />
       </Card.Content>
 
       <Card.Content extra>
-        <CurriculumVitaeButtonGroup curriculumVitae={curriculumVitae} />
+        <CurriculumVitaeButtonGroup
+          currentCurriculumVitae={currentCurriculumVitae}
+        />
       </Card.Content>
     </Card>
   );

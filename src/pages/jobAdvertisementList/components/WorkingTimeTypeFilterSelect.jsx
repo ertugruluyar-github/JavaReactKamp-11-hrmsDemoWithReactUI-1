@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import WorkingTimeTypeSevice from "../../../services/workingTimeTypeSevice";
-import { Form } from 'semantic-ui-react';
+import { Form } from "semantic-ui-react";
 
-export default function WorkingingTimeTypeFilterSelect({ handleFilter, value }) {
+export default function WorkingingTimeTypeFilterSelect({ handleFilter }) {
   const [workingTimeTypes, setWorkingTimeTypes] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function WorkingingTimeTypeFilterSelect({ handleFilter, value }) 
   let workingTimeTypeOptions = workingTimeTypes.map((workingTimeType) => ({
     key: workingTimeType.id,
     text: workingTimeType.type,
-    value: workingTimeType.type,
+    value: workingTimeType.id,
   }));
 
   return (
@@ -27,8 +27,13 @@ export default function WorkingingTimeTypeFilterSelect({ handleFilter, value }) 
       selection
       clearable
       options={workingTimeTypeOptions}
-      //onChange={(event, data) => handleFilter({workingTimeType: data.value})}
-      value={value}
+      onChange={(event, data) =>
+        handleFilter(
+          data.value !== ""
+            ? { workingTimeTypeId: data.value }
+            : { workingTimeTypeId: -1 }
+        )
+      }
     />
   );
 }

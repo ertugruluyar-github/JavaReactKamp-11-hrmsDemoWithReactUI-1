@@ -47,6 +47,25 @@ export default class JobAdvertisementService {
     );
   }
 
+  getAllByActivatedAndWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
+    pageNumber,
+    pageSize,
+    workingPlaceTypeId,
+    workingTimeTypeId
+  ) {
+    return axios.get(
+      this.currenthost +
+        "/api/jobadvertisements/getallbyactivatedandworkingplacetypeandworkingtimetypewithpageable?pageNumber=" +
+        pageNumber +
+        "&pageSize=" +
+        pageSize +
+        "&workingPlaceTypeId=" +
+        workingPlaceTypeId +
+        "&workingTimeTypeId=" +
+        workingTimeTypeId
+    );
+  }
+
   addJobAdvertisement(jobAdvertisement) {
     console.log(JSON.stringify(jobAdvertisement));
     return axios.post(
@@ -63,7 +82,12 @@ export default class JobAdvertisementService {
   updateJobAdvertisement(jobAdvertisement) {
     return axios.put(
       this.currenthost + "/api/jobadvertisements/update",
-      jobAdvertisement
+      JSON.stringify(jobAdvertisement),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 

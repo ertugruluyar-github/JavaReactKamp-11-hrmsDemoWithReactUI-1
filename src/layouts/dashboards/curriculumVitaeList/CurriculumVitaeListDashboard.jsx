@@ -1,10 +1,6 @@
-import React from 'react'
-import CurriculumVitaeList from './../../../pages/curriculumVitaeList/CurriculumVitaeList';
+import React from "react";
+import CurriculumVitaeList from "./../../../pages/curriculumVitaeList/CurriculumVitaeList";
 
 export default function CurriculumVitaeListDashboard() {
-    return (
-        <div>
-            <CurriculumVitaeList />
-        </div>
-    )
+  return <CurriculumVitaeList />;
 }

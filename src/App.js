@@ -10,7 +10,7 @@ import ActiveJobAdvertisementListDashboard from "./layouts/dashboards/activeJobA
 import JobAdvertisementAddFormDashboard from "./layouts/dashboards/jobAdvertisementAddForm/JobAdvertisementAddFormDashboard";
 import CurriculumVitaeListDashboard from "./layouts/dashboards/curriculumVitaeList/CurriculumVitaeListDashboard";
 import LeftSideBar from "./layouts/sidebars/LeftSideBar";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (

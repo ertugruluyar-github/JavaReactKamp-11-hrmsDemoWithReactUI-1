@@ -3,25 +3,25 @@ import { Card, Image, Segment } from "semantic-ui-react";
 import LanguagesPopup from "./LanguagesPopup";
 import TechnologyKnowledgesPopup from "./TechnologyKnowledgesPopup";
 
-export default function CurriculumVitaeInfo({ curriculumVitae }) {
+export default function CurriculumVitaeInfo({ currentCurriculumVitae }) {
   return (
     <>
-      <Image floated="left" size="tiny" src={curriculumVitae.photoLink} />
+      <Image floated="left" size="tiny" src={currentCurriculumVitae.photoLink} />
       <Card.Header>
-        {curriculumVitae.jobSeeker.firstName +
+        {currentCurriculumVitae.jobSeeker.firstName +
           " " +
-          curriculumVitae.jobSeeker.lastName}
+          currentCurriculumVitae.jobSeeker.lastName}
       </Card.Header>
       <Card.Meta textAlign="left">
-        <span>Created in {curriculumVitae.createDate}</span>
+        <span>Created in {currentCurriculumVitae.createDate}</span>
       </Card.Meta>
       <Segment basic floated="left" compact>
-        <LanguagesPopup curriculumVitaeId={curriculumVitae.id} />
-        <TechnologyKnowledgesPopup curriculumVitaeId={curriculumVitae.id} />
+        <LanguagesPopup curriculumVitaeId={currentCurriculumVitae.id} />
+        <TechnologyKnowledgesPopup curriculumVitaeId={currentCurriculumVitae.id} />
       </Segment>
 
       <Card.Description textAlign="left">
-        <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{curriculumVitae.description}</p>
+        <p style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>{currentCurriculumVitae.description}</p>
       </Card.Description>
     </>
   );

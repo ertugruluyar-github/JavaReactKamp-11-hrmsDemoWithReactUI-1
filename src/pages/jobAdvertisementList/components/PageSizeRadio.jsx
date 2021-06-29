@@ -1,11 +1,24 @@
 import React from "react";
-import { Form, Radio } from 'semantic-ui-react';
+import { Form, Radio } from "semantic-ui-react";
+import { Label } from "semantic-ui-react";
 
-export default function PageSizeRadio({label, name, value, checked, handleChange }) {
+export default function PageSizeRadio({
+  label,
+  name,
+  value,
+  checked,
+  handleChange,
+}) {
   return (
-    <Form.Field>
+    <Form.Field style={{ cursor: "pointer" }}>
       <Radio
-        label={label}
+        label={
+          checked ? (
+            <Label basic circular color="teal" content={label} />
+          ) : (
+            <Label basic circular content={label} />
+          )
+        }
         name={name}
         value={value}
         checked={checked}

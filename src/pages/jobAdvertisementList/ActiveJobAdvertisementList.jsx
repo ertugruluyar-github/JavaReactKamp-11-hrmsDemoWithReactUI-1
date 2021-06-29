@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import {
   Header,
-  Icon,
-  Menu,
   Segment,
   Table,
   Label,
   Rating,
   Sidebar,
-  Form,
 } from "semantic-ui-react";
 import JobAdvertisementService from "./../../services/jobAdvertisementService";
 import JobSeekerService from "./../../services/jobSeekerService";
 import JobAdvertisementFilter from "./components/JobAdvertisementFilter";
-import PageSizeRadio from "./components/PageSizeRadio";
+import PageSizeSelectForm from "./components/PageSizeSelectForm";
+import Pagination from "./../../utilities/Pagination";
+import JobAdvertisementsCountInfo from "./components/JobAdvertisementsCountInfo";
 
 export default function ActiveJobAdvertisementList() {
   const [
@@ -32,16 +31,35 @@ export default function ActiveJobAdvertisementList() {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [currentPageSize, setCurrentPageSize] = useState(10);
   const [isVisibleFilter, setIsVisibleFilter] = useState(false);
-  //const [filterValues, setFilterValues] = useState([]);
+  const [filterValues, setFilterValues] = useState({
+    workingPlaceTypeId: -1,
+    workingTimeTypeId: -1,
+  });
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
-    jobAdvertisementService
-      .getAllByActivatedWithPageable(currentPageNumber, currentPageSize)
-      .then((result) =>
-        setActiveJobAdvertisementsInCurrentPage(result.data.data)
-      );
-  }, [currentPageNumber, currentPageSize]);
+    if (
+      filterValues.workingPlaceTypeId === -1 &&
+      filterValues.workingTimeTypeId === -1
+    ) {
+      jobAdvertisementService
+        .getAllByActivatedWithPageable(currentPageNumber, currentPageSize)
+        .then((result) =>
+          setActiveJobAdvertisementsInCurrentPage(result.data.data)
+        );
+    } else {
+      jobAdvertisementService
+        .getAllByActivatedAndWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
+          currentPageNumber,
+          currentPageSize,
+          filterValues.workingPlaceTypeId,
+          filterValues.workingTimeTypeId
+        )
+        .then((result) =>
+          setActiveJobAdvertisementsInCurrentPage(result.data.data)
+        );
+    }
+  }, [currentPageNumber, currentPageSize, filterValues]);
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
@@ -49,7 +67,7 @@ export default function ActiveJobAdvertisementList() {
       handlePageCount(result.data.data.length, currentPageSize);
       setAllActivatedJobAdvertisementsCount(result.data.data.length);
     });
-  }, [currentPageSize]);
+  }, [currentPageSize, filterValues]);
 
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
@@ -96,6 +114,15 @@ export default function ActiveJobAdvertisementList() {
     setCurrentPageSize(value);
   };
 
+  let handleFilterVisible = () => {
+    isVisibleFilter ? setIsVisibleFilter(false) : setIsVisibleFilter(true);
+  };
+
+  let handleFilter = (filterValue) => {
+    console.log({ ...filterValues, ...filterValue });
+    setFilterValues({ ...filterValues, ...filterValue });
+  };
+
   return (
     <Segment raised padded>
       <Sidebar.Pushable>
@@ -111,29 +138,17 @@ export default function ActiveJobAdvertisementList() {
           placeholder
           compact
         >
-          <Header content="Filter" textAlign="left" as="h2" />
-          <Label
-            corner="right"
-            onClick={() =>
-              isVisibleFilter
-                ? setIsVisibleFilter(false)
-                : setIsVisibleFilter(true)
-            }
-          >
-            <Icon name="filter" color="blue" />
-          </Label>
-          <JobAdvertisementFilter />
+          <JobAdvertisementFilter
+            handleFilterVisible={handleFilterVisible}
+            handleFilter={handleFilter}
+          />
         </Sidebar>
         <Sidebar.Pusher>
           <Label
             color="blue"
             corner="right"
             icon="filter"
-            onClick={() =>
-              isVisibleFilter
-                ? setIsVisibleFilter(false)
-                : setIsVisibleFilter(true)
-            }
+            onClick={handleFilterVisible}
           />
           <Header
             dividing
@@ -213,83 +228,25 @@ export default function ActiveJobAdvertisementList() {
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan="8">
-                  <Segment floated="left">
-                    <Icon name="info circle" color="grey" size="large" />
-                    <span>
-                      {activeJobAdvertisementsInCurrentPage.length} Job
-                      advertisements listed (in{" "}
-                      {allActivatedJobAdvertisementsCount}
-                      ).
-                    </span>
-                  </Segment>
-                  <Menu floated="right" pagination>
-                    <Menu.Item
-                      icon="chevron left"
-                      onClick={() =>
-                        currentPageNumber > 1 &&
-                        setCurrentPageNumber(currentPageNumber - 1)
-                      }
-                    />
-                    {[...Array(pageCount)].map((page, index) => (
-                      <Menu.Item
-                        key={index}
-                        onClick={() => setCurrentPageNumber(index + 1)}
-                      >
-                        {index + 1}
-                      </Menu.Item>
-                    ))}
-                    <Menu.Item
-                      icon="chevron right"
-                      onClick={() =>
-                        currentPageNumber < pageCount &&
-                        setCurrentPageNumber(currentPageNumber + 1)
-                      }
-                    />
-                  </Menu>
+                  <JobAdvertisementsCountInfo
+                    currentDataCount={
+                      activeJobAdvertisementsInCurrentPage.length
+                    }
+                    allDataCount={allActivatedJobAdvertisementsCount}
+                  />
+                  <Pagination
+                    pageCount={pageCount}
+                    currentPageNumber={currentPageNumber}
+                    setCurrentPageNumber={setCurrentPageNumber}
+                  />
                 </Table.HeaderCell>
               </Table.Row>
               <Table.Row>
                 <Table.HeaderCell colSpan="8">
-                  <Form>
-                    <Form.Group>
-                      <PageSizeRadio
-                        label="10"
-                        name="pageSize"
-                        value={10}
-                        checked={currentPageSize === 10}
-                        handleChange={(e, { value }) =>
-                          handlePageSize(e, { value })
-                        }
-                      />
-                      <PageSizeRadio
-                        label="20"
-                        name="pageSize"
-                        value={20}
-                        checked={currentPageSize === 20}
-                        handleChange={(e, { value }) =>
-                          handlePageSize(e, { value })
-                        }
-                      />
-                      <PageSizeRadio
-                        label="50"
-                        name="pageSize"
-                        value={50}
-                        checked={currentPageSize === 50}
-                        handleChange={(e, { value }) =>
-                          handlePageSize(e, { value })
-                        }
-                      />
-                      <PageSizeRadio
-                        label="100"
-                        name="pageSize"
-                        value={100}
-                        checked={currentPageSize === 100}
-                        handleChange={(e, { value }) =>
-                          handlePageSize(e, { value })
-                        }
-                      />
-                    </Form.Group>
-                  </Form>
+                  <PageSizeSelectForm
+                    currentPageSize={currentPageSize}
+                    handlePageSize={handlePageSize}
+                  />
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>

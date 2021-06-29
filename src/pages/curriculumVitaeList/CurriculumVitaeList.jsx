@@ -17,7 +17,10 @@ export default function CurriculumVitaeList() {
       <Segment raised padded textAlign="left">
         <Card.Group itemsPerRow={2}>
           {curriculumVitaes.map((curriculumVitae) => (
-            <CurriculumVitaeCard key={curriculumVitae.id} curriculumVitae={curriculumVitae} />
+            <CurriculumVitaeCard
+              key={curriculumVitae.id}
+              currentCurriculumVitae={curriculumVitae}
+            />
           ))}
         </Card.Group>
       </Segment>

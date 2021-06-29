@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button, Modal, Container, Icon } from "semantic-ui-react";
+import { Button, Modal, Icon, Header } from "semantic-ui-react";
 import CurriculumVitaeDetailView from "../../curriculumVitaeDetailView/CurriculumVitaeDetailView";
 
-export default function CurriculumVitaeDetailViewModal({ curriculumVitae }) {
+export default function CurriculumVitaeDetailViewModal({ currentCurriculumVitae }) {
   const [open, setOpen] = useState(false);
 
   let showModel = () => {
@@ -26,9 +26,15 @@ export default function CurriculumVitaeDetailViewModal({ curriculumVitae }) {
         </Button>
       }
     >
-      <Modal.Header><Container textAlign="center" >Curriculum Vitae</Container></Modal.Header>
+      <Modal.Header>
+      <Header
+        color="blue"
+        icon="paperclip"
+        content="Curriculum Vitae Detail"
+      />
+      </Modal.Header>
       <Modal.Content>
-        <CurriculumVitaeDetailView currentCurriculumVitae={curriculumVitae} />
+        <CurriculumVitaeDetailView currentCurriculumVitae={currentCurriculumVitae} />
       </Modal.Content>
       <Modal.Actions>
         <p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>

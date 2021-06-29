@@ -14,11 +14,27 @@ export default class JobSeekerService {
   }
 
   addJobSeeker(jobSeeker) {
-    return axios.post(this.currenthost + "/api/jobseekers/add", jobSeeker);
+    return axios.post(
+      this.currenthost + "/api/jobseekers/add",
+      JSON.stringify(jobSeeker),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 
   updateJobSeeker(jobSeeker) {
-    return axios.put(this.currenthost + "/api/jobseekers/update", jobSeeker);
+    return axios.put(
+      this.currenthost + "/api/jobseekers/update",
+      JSON.stringify(jobSeeker),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 
   deleteJobSeeker(id) {
