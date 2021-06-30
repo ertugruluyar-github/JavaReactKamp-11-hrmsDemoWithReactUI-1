@@ -7,7 +7,7 @@ export default function LanguagesPopup({ curriculumVitaeId }) {
   useEffect(() => {
     let languageService = new LanguageService();
     languageService
-      .getLanguages()
+      .getAll()
       .then((result) => setLanguages(result.data.data));
   }, []);
 

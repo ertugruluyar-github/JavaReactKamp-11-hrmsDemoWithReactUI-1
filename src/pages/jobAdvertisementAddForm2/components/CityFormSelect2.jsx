@@ -7,7 +7,7 @@ export default function CityFormSelect2({ handleChange, onBlur, value, error }) 
 
   useEffect(() => {
     let cityService = new CityService();
-    cityService.getCities().then((result) => setCities(result.data.data));
+    cityService.getAll().then((result) => setCities(result.data.data));
   }, []);
 
   let cityOptions = cities.map((city) => ({

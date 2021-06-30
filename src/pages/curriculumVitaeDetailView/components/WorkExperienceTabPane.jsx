@@ -7,7 +7,7 @@ export default function WorkExperienceTabPane({ currentCurriculumVitaeId }) {
   useEffect(() => {
     let workExperiencesService = new WorkExperienceService();
     workExperiencesService
-      .getWorkExperiences()
+      .getAll()
       .then((result) => setWorkExperiences(result.data.data));
   }, []);
 

@@ -8,7 +8,7 @@ export default function CurriculumVitaeList() {
   useEffect(() => {
     let curriculumVitaeService = new CurriculumVitaeService();
     curriculumVitaeService
-      .getCurriculumVitaes()
+      .getAll()
       .then((result) => setCurriculumVitaes(result.data.data));
   }, []);
 

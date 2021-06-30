@@ -8,7 +8,7 @@ export default function JobSeekerList() {
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
     jobSeekerService
-      .getJobSeekers()
+      .getAll()
       .then((result) => setjobSeekers(result.data.data));
   }, []);
 

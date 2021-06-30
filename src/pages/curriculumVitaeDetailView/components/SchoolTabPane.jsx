@@ -6,7 +6,7 @@ export default function SchoolTabPane({ currentCurriculumVitaeId }) {
   const [schools, setSchools] = useState([]);
   useEffect(() => {
     let schoolService = new SchoolService();
-    schoolService.getSchools().then((result) => setSchools(result.data.data));
+    schoolService.getAll().then((result) => setSchools(result.data.data));
   }, []);
 
   return (

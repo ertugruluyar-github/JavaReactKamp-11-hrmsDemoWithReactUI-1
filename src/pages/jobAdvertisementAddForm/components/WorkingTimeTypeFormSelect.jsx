@@ -8,7 +8,7 @@ export default function WorkingingTimeTypeFormSelect({ handleChange, onBlur, val
   useEffect(() => {
     let workingTimeTypeService = new WorkingTimeTypeSevice();
     workingTimeTypeService
-      .getWorkingTimeTypes()
+      .getAll()
       .then((result) => setWorkingTimeTypes(result.data.data));
   }, []);
 

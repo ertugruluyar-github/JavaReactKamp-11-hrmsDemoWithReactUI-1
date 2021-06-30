@@ -14,7 +14,7 @@ export default function JobAdvertisementAddForm2() {
   const history = useHistory();
 
   let addJobAdvertisements = (values) => {
-    jobAdvertisementService2.addJobAdvertisement(values).then((response) => {
+    jobAdvertisementService2.add(values).then((response) => {
       if (response.status === 200) {
         alert(
           "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal."

@@ -7,7 +7,7 @@ export default function LanguageTabPane({ currentCurriculumVitaeId }) {
   useEffect(() => {
     let languageService = new LanguageService();
     languageService
-      .getLanguages()
+      .getAll()
       .then((result) => setLanguages(result.data.data));
   }, []);
 

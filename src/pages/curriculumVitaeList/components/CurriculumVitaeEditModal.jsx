@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Button, Modal, Icon } from "semantic-ui-react";
+import React from "react";
+import { Button, Icon } from "semantic-ui-react";
 import CurriculumVitaeUpdateForm from "./../../curriculumVitaeForms/CurriculumVitaeUpdateForm";
+import CustomModal from "./../../../utilities/CustomModal";
 
 export default function CurriculumVitaeEditModal({ currentCurriculumVitae }) {
   /*
@@ -49,20 +50,8 @@ export default function CurriculumVitaeEditModal({ currentCurriculumVitae }) {
       );
   }, [currentCurriculumVitae.id]);
 */
-  const [open, setOpen] = useState(false);
-
-  let showModel = () => {
-    setOpen(true);
-  };
-  let closeModel = () => {
-    setOpen(false);
-  };
-
   return (
-    <Modal
-      onClose={() => closeModel()}
-      onOpen={() => showModel()}
-      open={open}
+    <CustomModal
       trigger={
         <Button color="orange" animated="fade">
           <Button.Content visible>
@@ -71,15 +60,11 @@ export default function CurriculumVitaeEditModal({ currentCurriculumVitae }) {
           <Button.Content hidden>Edit</Button.Content>
         </Button>
       }
-    >
-      <Modal.Content>
+      content={
         <CurriculumVitaeUpdateForm
           currentCurriculumVitae={currentCurriculumVitae}
         />
-      </Modal.Content>
-      <Modal.Actions>
-        <p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>
-      </Modal.Actions>
-    </Modal>
+      }
+    />
   );
 }

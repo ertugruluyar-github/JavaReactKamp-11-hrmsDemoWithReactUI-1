@@ -43,13 +43,13 @@ export default function ActiveJobAdvertisementList() {
       filterValues.workingTimeTypeId === -1
     ) {
       jobAdvertisementService
-        .getAllByActivatedWithPageable(currentPageNumber, currentPageSize)
+        .getAllActivatedWithPageable(currentPageNumber, currentPageSize)
         .then((result) =>
           setActiveJobAdvertisementsInCurrentPage(result.data.data)
         );
     } else {
       jobAdvertisementService
-        .getAllByActivatedAndWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
+        .getAllActivatedByWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
           currentPageNumber,
           currentPageSize,
           filterValues.workingPlaceTypeId,
@@ -63,7 +63,7 @@ export default function ActiveJobAdvertisementList() {
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
-    jobAdvertisementService.getActivatedJobAdvertisements().then((result) => {
+    jobAdvertisementService.getAllActivated().then((result) => {
       handlePageCount(result.data.data.length, currentPageSize);
       setAllActivatedJobAdvertisementsCount(result.data.data.length);
     });
@@ -72,7 +72,7 @@ export default function ActiveJobAdvertisementList() {
   useEffect(() => {
     let jobSeekerService = new JobSeekerService();
     jobSeekerService
-      .getJobSeeker(5)
+      .get(5)
       .then((result) =>
         setCurrentFavouriteJobAdvertisements(
           result.data.data.favouriteJobAdvertisements

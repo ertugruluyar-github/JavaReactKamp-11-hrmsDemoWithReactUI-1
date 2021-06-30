@@ -8,7 +8,7 @@ export default function EmployerList() {
   useEffect(() => {
     let employerService = new EmployerService();
     employerService
-      .getEmployers()
+      .getAll()
       .then((result) => setEmployers(result.data.data));
   }, []);
 

@@ -8,7 +8,7 @@ export default function WorkingPlaceTypeFilterSelect({ handleFilter }) {
   useEffect(() => {
     let workingPlaceTypeService = new WorkingPlaceTypeSevice();
     workingPlaceTypeService
-      .getWorkingPlaceTypes()
+      .getAll()
       .then((result) => setWorkingPlaceTypes(result.data.data));
   }, []);
 

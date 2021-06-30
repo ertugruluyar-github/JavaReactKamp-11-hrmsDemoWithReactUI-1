@@ -20,7 +20,7 @@ export default function SchoolsTable({ currentCurriculumVitaeId }) {
     let schoolService = new SchoolService();
 
     schoolService
-      .getSchools()
+      .getAll()
       .then((result) =>
         setCurrentSchools(
           result.data.data.filter(

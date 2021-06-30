@@ -13,7 +13,7 @@ export default function EmployeePositionFormSelect({
   useEffect(() => {
     let employeePositionService = new EmployeePositionService();
     employeePositionService
-      .getEmployeePositions()
+      .getAll()
       .then((result) => setEmployeePoisitions(result.data.data));
   }, []);
 

@@ -8,7 +8,7 @@ export default function WorkingingTimeTypeFilterSelect({ handleFilter }) {
   useEffect(() => {
     let workingTimeTypeService = new WorkingTimeTypeSevice();
     workingTimeTypeService
-      .getWorkingTimeTypes()
+      .getAll()
       .then((result) => setWorkingTimeTypes(result.data.data));
   }, []);
 

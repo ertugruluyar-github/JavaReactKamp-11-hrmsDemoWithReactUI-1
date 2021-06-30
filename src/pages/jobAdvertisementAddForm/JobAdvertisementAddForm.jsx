@@ -19,7 +19,7 @@ export default function JobAdvertisementAddForm() {
   const dispatch = useDispatch();
 
   let addJobAdvertisements = (values) => {
-    jobAdvertisementService.addJobAdvertisement(values).then((response) => {
+    jobAdvertisementService.add(values).then((response) => {
       if (response.status === 200) {
         toast.success(
           "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +

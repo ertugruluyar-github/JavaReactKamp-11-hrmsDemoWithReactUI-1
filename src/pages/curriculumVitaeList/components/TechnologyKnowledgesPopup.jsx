@@ -7,7 +7,7 @@ export default function TechnologyKnowledgesPopup({ curriculumVitaeId }) {
   useEffect(() => {
     let technologyKnowledgeService = new TechnologyKnowledgeService();
     technologyKnowledgeService
-      .getTechnologyKnowledges()
+      .getAll()
       .then((result) => setTechnologyKnowledges(result.data.data));
   }, []);
 

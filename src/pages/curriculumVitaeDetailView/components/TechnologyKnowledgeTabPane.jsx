@@ -9,7 +9,7 @@ export default function TechnologyKnowledgeTabPane({
   useEffect(() => {
     let technologyKnowledgeService = new TechnologyKnowledgeService();
     technologyKnowledgeService
-      .getTechnologyKnowledges()
+      .getAll()
       .then((result) => setTechnologyKnowledges(result.data.data));
   }, []);
 
