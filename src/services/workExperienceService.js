@@ -5,19 +5,19 @@ export default class WorkExperienceService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
     
-    getWorkExperiences() {
+    getAll() {
         return axios.get(this.currenthost + "/api/workexperiences/getall");
     }
 
-    addWorkExperience(workExperience) {
+    add(workExperience) {
         return axios.post(this.currenthost + "/api/workexperiences/add", workExperience)
     }
 
-    updateWorkExperience(workExperience) {
+    update(workExperience) {
         return axios.put(this.currenthost + "/api/workexperiences/update", workExperience)
     }
 
-    deleteWorkExperience(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/workexperiences/delete?id="+ id)
     }
 

@@ -1,32 +1,41 @@
-import axios from "axios"
+import axios from "axios";
 
 export default class WorkingTimeTypeSevice {
-    localhost = "http://localhost:8080"
-    deployhost = "https://hrmsdemobackend.herokuapp.com"
-    currenthost = this.deployhost;
+  localhost = "http://localhost:8080";
+  deployhost = "https://hrmsdemobackend.herokuapp.com";
+  currenthost = this.deployhost;
 
-    getWorkingTimeTypes() {
-        return axios.get(this.currenthost + "/api/workingtimetypes/getall");
-    }
+  get(id) {
+    return axios.get(this.currenthost + "/api/workingtimetypes/get?id=" + id);
+  }
 
-    getWorkingTimeType(id) {
-        return axios.get(this.currenthost + "/api/workingtimetypes/get?id=" + id);
-    }
+  getAll() {
+    return axios.get(this.currenthost + "/api/workingtimetypes/getall");
+  }
 
-    getWorkingTimeTypesByType(type) {
-        return axios.get(this.currenthost + "/api/workingtimetypes/getallbytype?type=" + type);
-    }
+  getAllByType(type) {
+    return axios.get(
+      this.currenthost + "/api/workingtimetypes/getallbytype?type=" + type
+    );
+  }
 
-    addWorkingTimeType(workingTimeType) {
-        return axios.post(this.currenthost + "/api/workingtimetypes/add", workingTimeType)
-    }
+  add(workingTimeType) {
+    return axios.post(
+      this.currenthost + "/api/workingtimetypes/add",
+      workingTimeType
+    );
+  }
 
-    updateWorkingTimeType(workingTimeType) {
-        return axios.put(this.currenthost + "/api/workingtimetypes/update", workingTimeType)
-    }
+  update(workingTimeType) {
+    return axios.put(
+      this.currenthost + "/api/workingtimetypes/update",
+      workingTimeType
+    );
+  }
 
-    deleteWorkingTimeType(id) {
-        return axios.delete(this.currenthost + "/api/workingtimetypes/delete?id="+ id)
-    }
-
+  delete(id) {
+    return axios.delete(
+      this.currenthost + "/api/workingtimetypes/delete?id=" + id
+    );
+  }
 }

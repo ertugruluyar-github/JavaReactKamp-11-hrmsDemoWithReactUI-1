@@ -5,15 +5,15 @@ export default class CityService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
 
-    getCities() {
+    getAll() {
         return axios.get(this.currenthost + "/api/cities/getall");
     }
 
-    updateCity(city) {
+    update(city) {
         return axios.put(this.currenthost + "/api/cities/update", city)
     }
 
-    deleteCity(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/cities/delete?id="+ id)
     }
     

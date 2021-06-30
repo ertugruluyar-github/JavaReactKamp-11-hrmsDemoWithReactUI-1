@@ -11,7 +11,7 @@ export default function CurriculumVitaeForm({
   SubmitButtonIconName,
   SubmitButtonText,
   formik,
-  currentCurriculumVitaeId
+  currentCurriculumVitaeId,
 }) {
   return (
     <Segment padded raised>
@@ -21,13 +21,19 @@ export default function CurriculumVitaeForm({
         icon={headerIconName}
         content={headerContent}
       />
-      <Form onSubmit={formik.handleSubmit}>
+      <Form>
         <PhotoAndPersonalInfoSegment formik={formik} />
         <DescriptionSegment formik={formik} />
         <SocialMediaSegment formik={formik} />
         <SchoolSegment currentCurriculumVitaeId={currentCurriculumVitaeId} />
         <Segment basic>
-          <Form.Button type="submit" animated="fade" positive fluid>
+          <Form.Button
+            type="button"
+            onClick={formik.handleSubmit}
+            animated="fade"
+            positive
+            fluid
+          >
             <Button.Content visible>
               <Icon name={SubmitButtonIconName} />
             </Button.Content>

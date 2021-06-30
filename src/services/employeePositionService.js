@@ -5,19 +5,19 @@ export default class EmployeePositionService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
     
-    getEmployeePositions() {
+    getAll() {
         return axios.get(this.currenthost + "/api/employeepositions/getall");
     }
 
-    addEmployeePosition(employeeposition) {
+    add(employeeposition) {
         return axios.post(this.currenthost + "/api/employeepositions/add", employeeposition)
     }
 
-    updateEmployeePosition(employeeposition) {
+    update(employeeposition) {
         return axios.put(this.currenthost + "/api/employeepositions/update", employeeposition)
     }
 
-    deleteEmployeePosition(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/employeepositions/delete?id="+ id)
     }
 

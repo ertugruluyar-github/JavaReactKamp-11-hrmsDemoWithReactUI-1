@@ -5,13 +5,13 @@ export default class JobAdvertisementService2 {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
-  getActivatedJobAdvertisements() {
+  getAllActivated() {
     return axios.get(
       this.currenthost + "/api/jobadvertisements/getallactivated"
     );
   }
 
-  getActivatedJobAdvertisementsByJobAdvertisementId(id) {
+  getAllActivatedByJobAdvertisementId(id) {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedandJobAdvertisementid?id=" +
@@ -19,21 +19,21 @@ export default class JobAdvertisementService2 {
     );
   }
 
-  getActivatedJobAdvertisementsOrderByApplicationDeadlineAsc() {
+  getAllActivatedOrderByApplicationDeadlineAsc() {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedorderbyapplicationdeadlineasc"
     );
   }
 
-  getActivatedJobAdvertisementsOrderByReleaseDateAsc() {
+  getAllActivatedOrderByReleaseDateAsc() {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedorderbyreleasedateasc"
     );
   }
 
-  addJobAdvertisement(jobAdvertisement) {
+  add(jobAdvertisement) {
     console.log(jobAdvertisement);
     console.log(
       JSON.stringify({
@@ -93,14 +93,14 @@ export default class JobAdvertisementService2 {
     );
   }
 
-  updateJobAdvertisement(jobAdvertisement) {
+  update(jobAdvertisement) {
     return axios.put(
       this.currenthost + "/api/jobadvertisements/update",
       jobAdvertisement
     );
   }
 
-  deleteJobAdvertisement(id) {
+  delete(id) {
     return axios.delete(
       this.currenthost + "/api/jobadvertisements/delete?id=" + id
     );

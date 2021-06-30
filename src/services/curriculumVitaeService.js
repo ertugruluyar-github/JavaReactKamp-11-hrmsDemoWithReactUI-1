@@ -5,11 +5,11 @@ export default class CurriculumVitaeService {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
-  getCurriculumVitaes() {
+  getAll() {
     return axios.get(this.currenthost + "/api/curriculumvitaes/getall");
   }
 
-  addCurriculumVitae(curriculumVitae) {
+  add(curriculumVitae) {
     return axios.post(
       this.currenthost + "/api/curriculumvitaes/add",
       JSON.stringify(curriculumVitae),
@@ -21,7 +21,7 @@ export default class CurriculumVitaeService {
     );
   }
 
-  updateCurriculumVitae(curriculumVitae) {
+  update(curriculumVitae) {
     return axios.put(
       this.currenthost + "/api/curriculumvitaes/update",
       JSON.stringify(curriculumVitae),
@@ -33,7 +33,7 @@ export default class CurriculumVitaeService {
     );
   }
 
-  deleteCurriculumVitae(id) {
+  delete(id) {
     return axios.delete(
       this.currenthost + "/api/curriculumvitaes/delete?id=" + id
     );

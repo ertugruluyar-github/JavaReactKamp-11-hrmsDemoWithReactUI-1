@@ -5,19 +5,19 @@ export default class SchoolService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
 
-    getSchools() {
+    getAll() {
         return axios.get(this.currenthost + "/api/schools/getall");
     }
 
-    addSchool(school) {
+    add(school) {
         return axios.post(this.currenthost + "/api/schools/add", school)
     }
 
-    updateSchool(school) {
+    update(school) {
         return axios.put(this.currenthost + "/api/schools/update", school)
     }
 
-    deleteSchool(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/schools/delete?id="+ id)
     }
 

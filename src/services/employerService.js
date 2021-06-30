@@ -5,19 +5,19 @@ export default class EmployerService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
 
-    getEmployers() {
+    getAll() {
         return axios.get(this.currenthost + "/api/employers/getall");
     }
 
-    addEmployer(employer) {
+    add(employer) {
         return axios.post(this.currenthost + "/api/employers/add", employer)
     }
 
-    updatEemployer(employer) {
+    update(employer) {
         return axios.put(this.currenthost + "/api/employers/update", employer)
     }
 
-    deleteEmployer(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/employers/delete?id="+ id)
     }
 

@@ -16,7 +16,7 @@ export default function SchoolForm({
         icon={headerIconName}
         content={headerContent}
       />
-      <Form onSubmit={formik.handleSubmit}>
+      <Form>
         <Form.Group>
           <Form.Input
             id="name"
@@ -70,7 +70,16 @@ export default function SchoolForm({
           />
         </Form.Group>
         <Segment basic>
-          <Form.Button type="submit" animated="fade" positive fluid>
+          <Form.Button
+            type="button"
+            onClick={formik.handleSubmit}
+            //Galiba iç içe form olduğu için bu Form'a onSubmit verince
+            //School'daki edit butonuna basınca bu form submit ediliyor.
+            //Bu yüzden onclick ile yapıyorum.
+            animated="fade"
+            positive
+            fluid
+          >
             <Button.Content visible>
               <Icon name={SubmitButtonIconName} />
             </Button.Content>

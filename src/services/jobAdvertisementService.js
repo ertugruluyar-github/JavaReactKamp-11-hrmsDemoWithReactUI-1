@@ -5,17 +5,17 @@ export default class JobAdvertisementService {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
-  getJobAdvertisement(id) {
+  get(id) {
     return axios.get(this.currenthost + "/api/jobadvertisements/get?id=" + id);
   }
 
-  getActivatedJobAdvertisements() {
+  getAllActivated() {
     return axios.get(
       this.currenthost + "/api/jobadvertisements/getallactivated"
     );
   }
 
-  getActivatedJobAdvertisementsByJobAdvertisementId(id) {
+  getAllActivatedByJobAdvertisementId(id) {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedandJobAdvertisementid?id=" +
@@ -23,21 +23,21 @@ export default class JobAdvertisementService {
     );
   }
 
-  getActivatedJobAdvertisementsOrderByApplicationDeadlineAsc() {
+  getAllActivatedOrderByApplicationDeadlineAsc() {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedorderbyapplicationdeadlineasc"
     );
   }
 
-  getActivatedJobAdvertisementsOrderByReleaseDateAsc() {
+  getAllActivatedOrderByReleaseDateAsc() {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallactivatedorderbyreleasedateasc"
     );
   }
 
-  getAllByActivatedWithPageable(pageNumber, pageSize) {
+  getAllActivatedWithPageable(pageNumber, pageSize) {
     return axios.get(
       this.currenthost +
         "/api/jobadvertisements/getallbyactivatedwithpageable?pageNumber=" +
@@ -47,7 +47,7 @@ export default class JobAdvertisementService {
     );
   }
 
-  getAllByActivatedAndWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
+  getAllActivatedByWorkingPlaceTypeAndWorkingTimeTypeWithPageable(
     pageNumber,
     pageSize,
     workingPlaceTypeId,
@@ -66,7 +66,7 @@ export default class JobAdvertisementService {
     );
   }
 
-  addJobAdvertisement(jobAdvertisement) {
+  add(jobAdvertisement) {
     console.log(JSON.stringify(jobAdvertisement));
     return axios.post(
       this.currenthost + "/api/jobadvertisements/add",
@@ -79,7 +79,7 @@ export default class JobAdvertisementService {
     );
   }
 
-  updateJobAdvertisement(jobAdvertisement) {
+  update(jobAdvertisement) {
     return axios.put(
       this.currenthost + "/api/jobadvertisements/update",
       JSON.stringify(jobAdvertisement),
@@ -91,7 +91,7 @@ export default class JobAdvertisementService {
     );
   }
 
-  deleteJobAdvertisement(id) {
+  delete(id) {
     return axios.delete(
       this.currenthost + "/api/jobadvertisements/delete?id=" + id
     );

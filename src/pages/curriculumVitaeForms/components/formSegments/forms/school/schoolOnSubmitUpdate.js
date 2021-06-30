@@ -3,14 +3,14 @@ import SchoolService from "./../../../../../../services/schoolService";
 
 const schoolOnSubmitUpdate = (values, currentSchoolId, currentCurriculumVitaeId) => {
   let schoolService = new SchoolService();
-  console.log("-------")
+  console.log("---Updated---")
   console.log(values)
-  console.log("-------")
+  console.log("---Updated---")
   values.id = currentSchoolId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
-  //schoolService
-  //  .updateSchool(values)
-  //  .then(toast.success("Schools updated successfully."));
+  schoolService
+    .updateSchool(values)
+    .then(toast.success("Schools updated successfully."));
 };
 
 export default schoolOnSubmitUpdate;

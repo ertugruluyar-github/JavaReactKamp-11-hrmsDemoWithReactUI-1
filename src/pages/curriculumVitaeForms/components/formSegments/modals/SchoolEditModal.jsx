@@ -1,37 +1,20 @@
-import React, { useState } from "react";
-import { Button, Modal, Icon } from "semantic-ui-react";
-import SchoolUpdateForm from './../forms/school/SchoolUpdateForm';
+import React from "react";
+import { Button, Icon } from "semantic-ui-react";
+import SchoolUpdateForm from "./../forms/school/SchoolUpdateForm";
+import CustomModal from '../../../../../utilities/CustomModal';
 
 export default function SchoolEditModal({ currentSchool }) {
-  const [open, setOpen] = useState(false);
-
-  let showModel = () => {
-    setOpen(true);
-  };
-  let closeModel = () => {
-    setOpen(false);
-  };
-
   return (
-    <Modal
-      onClose={() => closeModel()}
-      onOpen={() => showModel()}
-      open={open}
+    <CustomModal
       trigger={
-        <Button color="orange" animated="fade">
+        <Button color="orange" animated="fade" circular>
           <Button.Content visible>
             <Icon name="edit" />
           </Button.Content>
           <Button.Content hidden>Edit</Button.Content>
         </Button>
       }
-    >
-      <Modal.Content>
-        <SchoolUpdateForm currentSchool={currentSchool} />
-      </Modal.Content>
-      <Modal.Actions>
-        <p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>
-      </Modal.Actions>
-    </Modal>
+      content={<SchoolUpdateForm currentSchool={currentSchool} />}
+    />
   );
 }

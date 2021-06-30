@@ -5,19 +5,19 @@ export default class LanguageService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
 
-    getLanguages() {
+    getAll() {
         return axios.get(this.currenthost + "/api/languages/getall");
     }
 
-    addLanguage(language) {
+    add(language) {
         return axios.post(this.currenthost + "/api/languages/add", language)
     }
 
-    updateLanguage(language) {
+    update(language) {
         return axios.put(this.currenthost + "/api/languages/update", language)
     }
 
-    deleteLanguage(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/languages/delete?id="+ id)
     }
 

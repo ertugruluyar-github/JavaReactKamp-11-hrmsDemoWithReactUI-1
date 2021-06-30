@@ -5,15 +5,15 @@ export default class JobSeekerService {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
-  getJobSeeker(id) {
+  get(id) {
     return axios.get(this.currenthost + "/api/jobseekers/get?id=" + id);
   }
 
-  getJobSeekers() {
+  getAll() {
     return axios.get(this.currenthost + "/api/jobseekers/getall");
   }
 
-  addJobSeeker(jobSeeker) {
+  add(jobSeeker) {
     return axios.post(
       this.currenthost + "/api/jobseekers/add",
       JSON.stringify(jobSeeker),
@@ -25,7 +25,7 @@ export default class JobSeekerService {
     );
   }
 
-  updateJobSeeker(jobSeeker) {
+  update(jobSeeker) {
     return axios.put(
       this.currenthost + "/api/jobseekers/update",
       JSON.stringify(jobSeeker),
@@ -37,7 +37,7 @@ export default class JobSeekerService {
     );
   }
 
-  deleteJobSeeker(id) {
+  delete(id) {
     return axios.delete(this.currenthost + "/api/jobseekers/delete?id=" + id);
   }
 

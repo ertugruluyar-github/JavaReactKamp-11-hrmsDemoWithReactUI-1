@@ -5,19 +5,19 @@ export default class TechnologyKnowledgeService {
     deployhost = "https://hrmsdemobackend.herokuapp.com"
     currenthost = this.deployhost;
     
-    getTechnologyKnowledges() {
+    getAll() {
         return axios.get(this.currenthost + "/api/technologyknowledges/getall");
     }
 
-    addTechnologyKnowledge(technologyKnowledge) {
+    add(technologyKnowledge) {
         return axios.post(this.currenthost + "/api/technologyknowledges/add", technologyKnowledge)
     }
 
-    updateTechnologyKnowledge(technologyKnowledge) {
+    update(technologyKnowledge) {
         return axios.put(this.currenthost + "/api/technologyknowledges/update", technologyKnowledge)
     }
 
-    deleteTechnologyKnowledge(id) {
+    delete(id) {
         return axios.delete(this.currenthost + "/api/technologyknowledges/delete?id="+ id)
     }
 

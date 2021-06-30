@@ -1,32 +1,41 @@
-import axios from "axios"
+import axios from "axios";
 
 export default class WorkingPlaceTypeSevice {
-    localhost = "http://localhost:8080"
-    deployhost = "https://hrmsdemobackend.herokuapp.com"
-    currenthost = this.deployhost;
+  localhost = "http://localhost:8080";
+  deployhost = "https://hrmsdemobackend.herokuapp.com";
+  currenthost = this.deployhost;
 
-    getWorkingPlaceTypes() {
-        return axios.get(this.currenthost + "/api/workingplacetypes/getall");
-    }
+  get(id) {
+    return axios.get(this.currenthost + "/api/workingplacetypes/get?id=" + id);
+  }
+  
+  getAll() {
+    return axios.get(this.currenthost + "/api/workingplacetypes/getall");
+  }
 
-    getWorkingPlaceType(id) {
-        return axios.get(this.currenthost + "/api/workingplacetypes/get?id=" + id);
-    }
+  getAllByType(type) {
+    return axios.get(
+      this.currenthost + "/api/workingplacetypes/getallbytype?type=" + type
+    );
+  }
 
-    getWorkingPlaceTypesByType(type) {
-        return axios.get(this.currenthost + "/api/workingplacetypes/getallbytype?type=" + type);
-    }
+  add(workingPlaceType) {
+    return axios.post(
+      this.currenthost + "/api/workingplacetypes/add",
+      workingPlaceType
+    );
+  }
 
-    addWorkingPlaceType(workingPlaceType) {
-        return axios.post(this.currenthost + "/api/workingplacetypes/add", workingPlaceType)
-    }
+  update(workingPlaceType) {
+    return axios.put(
+      this.currenthost + "/api/workingplacetypes/update",
+      workingPlaceType
+    );
+  }
 
-    updateWorkingPlaceType(workingPlaceType) {
-        return axios.put(this.currenthost + "/api/workingplacetypes/update", workingPlaceType)
-    }
-
-    deleteWorkingPlaceType(id) {
-        return axios.delete(this.currenthost + "/api/workingplacetypes/delete?id="+ id)
-    }
-
+  delete(id) {
+    return axios.delete(
+      this.currenthost + "/api/workingplacetypes/delete?id=" + id
+    );
+  }
 }
