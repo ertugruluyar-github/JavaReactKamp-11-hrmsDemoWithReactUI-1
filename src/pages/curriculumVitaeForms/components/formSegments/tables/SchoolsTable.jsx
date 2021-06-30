@@ -3,7 +3,7 @@ import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import SchoolEditModal from "./../modals/SchoolEditModal";
 import SchoolService from "./../../../../../services/schoolService";
 import SchoolAddModal from "./../modals/SchoolAddModal";
-import DeleteModal from '../modals/DeleteModal';
+import DeleteModal from "../modals/DeleteModal";
 
 export default function SchoolsTable({ currentCurriculumVitaeId }) {
   const [currentSchools, setCurrentSchools] = useState([
@@ -60,7 +60,12 @@ export default function SchoolsTable({ currentCurriculumVitaeId }) {
               <Table.Cell>{school.department}</Table.Cell>
               <Table.Cell>{school.startDate}</Table.Cell>
               <Table.Cell>{school.endDate}</Table.Cell>
-              <Table.Cell><DeleteModal /></Table.Cell>
+              <Table.Cell>
+                <DeleteModal
+                  service={new SchoolService()}
+                  entityId={school.id}
+                />
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -73,9 +78,10 @@ export default function SchoolsTable({ currentCurriculumVitaeId }) {
                 <span>{currentSchools.length} schools listed.</span>
               </Segment>
               <Label tag color="olive">
-                <SchoolAddModal />
+                <SchoolAddModal
+                  currentCurriculumVitaeId={currentCurriculumVitaeId}
+                />
               </Label>
-                
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>

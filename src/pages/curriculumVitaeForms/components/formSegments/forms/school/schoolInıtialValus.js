@@ -3,7 +3,7 @@ const schoolInitialValues = {
   department: "",
   startDate: "",
   endDate: "",
-  curriculumVitae: { id: "" },
+  curriculumVitae: {},
 };
 
 export default schoolInitialValues;

@@ -8,7 +8,7 @@ export default class WorkingPlaceTypeSevice {
   get(id) {
     return axios.get(this.currenthost + "/api/workingplacetypes/get?id=" + id);
   }
-  
+
   getAll() {
     return axios.get(this.currenthost + "/api/workingplacetypes/getall");
   }
@@ -22,14 +22,24 @@ export default class WorkingPlaceTypeSevice {
   add(workingPlaceType) {
     return axios.post(
       this.currenthost + "/api/workingplacetypes/add",
-      workingPlaceType
+      JSON.stringify(workingPlaceType),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
   update(workingPlaceType) {
     return axios.put(
       this.currenthost + "/api/workingplacetypes/update",
-      workingPlaceType
+      JSON.stringify(workingPlaceType),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 

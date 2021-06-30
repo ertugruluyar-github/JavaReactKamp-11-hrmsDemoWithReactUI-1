@@ -14,14 +14,19 @@ export default function JobAdvertisementAddForm2() {
   const history = useHistory();
 
   let addJobAdvertisements = (values) => {
-    jobAdvertisementService2.add(values).then((response) => {
-      if (response.status === 200) {
-        alert(
-          "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal."
-          + "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
-        );
-      }
-    });
+    jobAdvertisementService2
+      .add(values)
+      .then((response) => {
+        if (response.status === 200) {
+          alert(
+            "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +
+              "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
+          );
+        }
+      })
+      .catch((reason) => {
+        console.log(reason);
+      });
   };
 
   const ValidationSchema = Yup.object().shape({

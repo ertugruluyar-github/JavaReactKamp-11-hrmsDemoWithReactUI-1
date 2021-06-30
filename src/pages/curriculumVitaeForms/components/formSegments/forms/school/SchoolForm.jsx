@@ -40,6 +40,7 @@ export default function SchoolForm({
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.department}
+            error={formik.errors?.department}
             placeholder="Math Teacher"
             width={8}
           />
@@ -66,6 +67,7 @@ export default function SchoolForm({
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.endDate}
+            error={formik.errors?.endDate}
             width={8}
           />
         </Form.Group>

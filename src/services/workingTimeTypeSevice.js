@@ -22,14 +22,24 @@ export default class WorkingTimeTypeSevice {
   add(workingTimeType) {
     return axios.post(
       this.currenthost + "/api/workingtimetypes/add",
-      workingTimeType
+      JSON.stringify(workingTimeType),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
   update(workingTimeType) {
     return axios.put(
       this.currenthost + "/api/workingtimetypes/update",
-      workingTimeType
+      JSON.stringify(workingTimeType),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 

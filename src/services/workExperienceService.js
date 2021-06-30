@@ -1,24 +1,41 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class WorkExperienceService {
-    localhost = "http://localhost:8080"
-    deployhost = "https://hrmsdemobackend.herokuapp.com"
-    currenthost = this.deployhost;
-    
-    getAll() {
-        return axios.get(this.currenthost + "/api/workexperiences/getall");
-    }
+  localhost = "http://localhost:8080";
+  deployhost = "https://hrmsdemobackend.herokuapp.com";
+  currenthost = this.deployhost;
 
-    add(workExperience) {
-        return axios.post(this.currenthost + "/api/workexperiences/add", workExperience)
-    }
+  getAll() {
+    return axios.get(this.currenthost + "/api/workexperiences/getall");
+  }
 
-    update(workExperience) {
-        return axios.put(this.currenthost + "/api/workexperiences/update", workExperience)
-    }
+  add(workExperience) {
+    return axios.post(
+      this.currenthost + "/api/workexperiences/add",
+      JSON.stringify(workExperience),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 
-    delete(id) {
-        return axios.delete(this.currenthost + "/api/workexperiences/delete?id="+ id)
-    }
+  update(workExperience) {
+    return axios.put(
+      this.currenthost + "/api/workexperiences/update",
+      JSON.stringify(workExperience),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 
+  delete(id) {
+    return axios.delete(
+      this.currenthost + "/api/workexperiences/delete?id=" + id
+    );
+  }
 }

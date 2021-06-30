@@ -1,9 +1,9 @@
 import React from "react";
-import CustomModal from '../../../../../utilities/CustomModal';
-import SchoolAddForm from './../forms/school/SchoolAddForm';
-import { Button, Icon } from 'semantic-ui-react';
+import CustomModal from "../../../../../utilities/CustomModal";
+import SchoolAddForm from "./../forms/school/SchoolAddForm";
+import { Button, Icon } from "semantic-ui-react";
 
-export default function SchoolAddModal() {
+export default function SchoolAddModal({ currentCurriculumVitaeId }) {
   return (
     <CustomModal
       trigger={
@@ -14,7 +14,9 @@ export default function SchoolAddModal() {
           <Button.Content hidden>Add</Button.Content>
         </Button>
       }
-      content={<SchoolAddForm />}
+      content={
+        <SchoolAddForm currentCurriculumVitaeId={currentCurriculumVitaeId} />
+      }
     />
   );
 }

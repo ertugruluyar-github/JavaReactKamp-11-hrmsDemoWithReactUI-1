@@ -80,6 +80,7 @@ export default class JobAdvertisementService {
   }
 
   update(jobAdvertisement) {
+    console.log(JSON.stringify(jobAdvertisement));
     return axios.put(
       this.currenthost + "/api/jobadvertisements/update",
       JSON.stringify(jobAdvertisement),

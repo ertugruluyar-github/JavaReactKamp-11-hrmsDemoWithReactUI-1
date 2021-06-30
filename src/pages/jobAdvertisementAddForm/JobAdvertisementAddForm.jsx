@@ -19,14 +19,19 @@ export default function JobAdvertisementAddForm() {
   const dispatch = useDispatch();
 
   let addJobAdvertisements = (values) => {
-    jobAdvertisementService.add(values).then((response) => {
-      if (response.status === 200) {
-        toast.success(
-          "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +
-            "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
-        );
-      }
-    });
+    jobAdvertisementService
+      .add(values)
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success(
+            "Job Advertisement added successfully. You must wait confirm to your Job Advertisement by our personal." +
+              "(NOT: İleride personel onaylma başlayınca onu kontrol ederim. Şimdilik onay olmadan da gözükür.)"
+          );
+        }
+      })
+      .catch((reason) => {
+        console.log(reason);
+      });
   };
 
   const ValidationSchema = Yup.object().shape({

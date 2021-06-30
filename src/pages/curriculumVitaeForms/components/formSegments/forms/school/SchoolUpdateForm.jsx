@@ -5,7 +5,7 @@ import schoolOnSubmitUpdate from "./schoolOnSubmitUpdate";
 import SchoolForm from "./SchoolForm";
 
 export default function SchoolUpdateForm({ currentSchool }) {
-  let schoolFormik = useFormik({
+  let schoolUpdateFormik = useFormik({
     initialValues: currentSchool,
     validationSchema: schoolValidationShema,
     onSubmit: (values) => {
@@ -23,7 +23,7 @@ export default function SchoolUpdateForm({ currentSchool }) {
       headerContent="Update School"
       SubmitButtonIconName="save"
       SubmitButtonText="Update"
-      formik={schoolFormik}
+      formik={schoolUpdateFormik}
     />
   );
 }

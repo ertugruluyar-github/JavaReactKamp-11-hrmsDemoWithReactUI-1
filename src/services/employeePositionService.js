@@ -1,24 +1,41 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class EmployeePositionService {
-    localhost = "http://localhost:8080"
-    deployhost = "https://hrmsdemobackend.herokuapp.com"
-    currenthost = this.deployhost;
-    
-    getAll() {
-        return axios.get(this.currenthost + "/api/employeepositions/getall");
-    }
+  localhost = "http://localhost:8080";
+  deployhost = "https://hrmsdemobackend.herokuapp.com";
+  currenthost = this.deployhost;
 
-    add(employeeposition) {
-        return axios.post(this.currenthost + "/api/employeepositions/add", employeeposition)
-    }
+  getAll() {
+    return axios.get(this.currenthost + "/api/employeepositions/getall");
+  }
 
-    update(employeeposition) {
-        return axios.put(this.currenthost + "/api/employeepositions/update", employeeposition)
-    }
+  add(employeeposition) {
+    return axios.post(
+      this.currenthost + "/api/employeepositions/add",
+      JSON.stringify(employeeposition),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 
-    delete(id) {
-        return axios.delete(this.currenthost + "/api/employeepositions/delete?id="+ id)
-    }
+  update(employeeposition) {
+    return axios.put(
+      this.currenthost + "/api/employeepositions/update",
+      JSON.stringify(employeeposition),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 
+  delete(id) {
+    return axios.delete(
+      this.currenthost + "/api/employeepositions/delete?id=" + id
+    );
+  }
 }
