@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
-import DeleteModal from "../modals/DeleteModal";
+import DeleteModal from './../../../../../utilities/DeleteModal';
 import WorkExperienceService from "./../../../../../services/workExperienceService";
 import WorkExperienceEditModal from "./../modals/workExperience/WorkExperienceEditModal";
 import WorkExperienceAddModal from "./../modals/workExperience/WorkExperienceAddModal";

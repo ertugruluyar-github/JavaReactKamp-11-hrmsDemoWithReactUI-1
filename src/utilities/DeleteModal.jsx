@@ -1,5 +1,5 @@
 import React from "react";
-import CustomModal from "../../../../../utilities/CustomModal";
+import CustomModal from "./CustomModal";
 import { Button, Icon, Header } from "semantic-ui-react";
 import { toast } from "react-toastify";
 

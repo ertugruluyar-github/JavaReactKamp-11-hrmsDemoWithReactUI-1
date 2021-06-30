@@ -3,7 +3,7 @@ import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import LanguageEditModal from "./../modals/language/LanguageEditModal";
 import LanguageService from "./../../../../../services/languageService";
 import LanguageAddModal from "./../modals/language/LanguageAddModal";
-import DeleteModal from "../modals/DeleteModal";
+import DeleteModal from './../../../../../utilities/DeleteModal';
 
 export default function LanguagesTable({ currentCurriculumVitaeId }) {
   const [currentLanguages, setCurrentLanguages] = useState([

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import TechnologyKnowledgeEditModal from "./../modals/technologyKnowledge/TechnologyKnowledgeEditModal";
 import TechnologyKnowledgeAddModal from "./../modals/technologyKnowledge/TechnologyKnowledgeAddModal";
-import DeleteModal from "../modals/DeleteModal";
 import TechnologyKnowledgeService from './../../../../../services/technologyKnowledgeService';
+import DeleteModal from './../../../../../utilities/DeleteModal';
 
 export default function TechnologyKnowledgesTable({ currentCurriculumVitaeId }) {
   const [currentTechnologyKnowledges, setCurrentTechnologyKnowledges] = useState([
