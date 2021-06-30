@@ -1,22 +1,13 @@
-import React, { useState } from "react";
-import { Button, Modal, Icon, Header } from "semantic-ui-react";
+import React from "react";
+import { Button, Icon } from "semantic-ui-react";
 import CurriculumVitaeDetailView from "../../curriculumVitaeDetailView/CurriculumVitaeDetailView";
+import CustomModal from "./../../../utilities/CustomModal";
 
-export default function CurriculumVitaeDetailViewModal({ currentCurriculumVitae }) {
-  const [open, setOpen] = useState(false);
-
-  let showModel = () => {
-    setOpen(true);
-  };
-  let closeModel = () => {
-    setOpen(false);
-  };
-
+export default function CurriculumVitaeDetailViewModal({
+  currentCurriculumVitae,
+}) {
   return (
-    <Modal
-      onClose={() => closeModel()}
-      onOpen={() => showModel()}
-      open={open}
+    <CustomModal
       trigger={
         <Button color="blue" animated="fade">
           <Button.Content visible>
@@ -25,20 +16,12 @@ export default function CurriculumVitaeDetailViewModal({ currentCurriculumVitae 
           <Button.Content hidden>View Detail</Button.Content>
         </Button>
       }
-    >
-      <Modal.Header>
-      <Header
-        color="blue"
-        icon="paperclip"
-        content="Curriculum Vitae Detail"
-      />
-      </Modal.Header>
-      <Modal.Content>
-        <CurriculumVitaeDetailView currentCurriculumVitae={currentCurriculumVitae} />
-      </Modal.Content>
-      <Modal.Actions>
-        <p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>
-      </Modal.Actions>
-    </Modal>
+      content={
+        <CurriculumVitaeDetailView
+          currentCurriculumVitae={currentCurriculumVitae}
+        />
+      }
+      actions={<p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>}
+    />
   );
 }

@@ -3,15 +3,15 @@ import { useFormik } from "formik";
 import schoolValidationShema from "./schoolValidationSchema";
 import schoolOnSubmitAdd from "./schoolOnSubmitAdd";
 import SchoolForm from "./SchoolForm";
-import schoolInitialValues from './schoolInıtialValus';
+import schoolInitialValues from './schoolInitialValues';
 
 export default function SchoolAddForm({ currentCurriculumVitaeId }) {
   let schoolAddFormik = useFormik({
     initialValues: schoolInitialValues,
     validationSchema: schoolValidationShema,
     onSubmit: (values) => {
-      schoolOnSubmitAdd(values, currentCurriculumVitaeId);
       console.log(values)
+      schoolOnSubmitAdd(values, currentCurriculumVitaeId);
     },
   });
 

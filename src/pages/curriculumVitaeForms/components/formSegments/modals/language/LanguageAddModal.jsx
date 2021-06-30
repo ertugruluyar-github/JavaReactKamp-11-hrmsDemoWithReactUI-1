@@ -1,9 +1,9 @@
 import React from "react";
-import CustomModal from "../../../../../utilities/CustomModal";
-import SchoolAddForm from "./../forms/school/SchoolAddForm";
+import LanguageAddForm from "../../forms/language/LanguageAddForm";
 import { Button, Icon } from "semantic-ui-react";
+import CustomModal from '../../../../../../utilities/CustomModal';
 
-export default function SchoolAddModal({ currentCurriculumVitaeId }) {
+export default function LanguageAddModal({ currentCurriculumVitaeId }) {
   return (
     <CustomModal
       trigger={
@@ -15,8 +15,9 @@ export default function SchoolAddModal({ currentCurriculumVitaeId }) {
         </Button>
       }
       content={
-        <SchoolAddForm currentCurriculumVitaeId={currentCurriculumVitaeId} />
+        <LanguageAddForm currentCurriculumVitaeId={currentCurriculumVitaeId} />
       }
+      actions={<p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>}
     />
   );
 }

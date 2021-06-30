@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Icon } from "semantic-ui-react";
-import SchoolUpdateForm from "./../forms/school/SchoolUpdateForm";
-import CustomModal from '../../../../../utilities/CustomModal';
+import LanguageUpdateForm from '../../forms/language/LanguageUpdateForm';
+import CustomModal from '../../../../../../utilities/CustomModal';
 
-export default function SchoolEditModal({ currentSchool }) {
+export default function LanguageEditModal({ currentLanguage }) {
   return (
     <CustomModal
       trigger={
@@ -14,7 +14,8 @@ export default function SchoolEditModal({ currentSchool }) {
           <Button.Content hidden>Edit</Button.Content>
         </Button>
       }
-      content={<SchoolUpdateForm currentSchool={currentSchool} />}
+      content={<LanguageUpdateForm currentLanguage={currentLanguage} />}
+      actions={<p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>}
     />
   );
 }

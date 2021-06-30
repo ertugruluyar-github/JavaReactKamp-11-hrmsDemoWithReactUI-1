@@ -1,22 +1,22 @@
 import { toast } from "react-toastify";
-import SchoolService from "./../../../../../../services/schoolService";
+import LanguageService from "../../../../../../services/languageService";
 
-const schoolOnSubmitUpdate = (
+const languageOnSubmitUpdate = (
   values,
-  currentSchoolId,
+  currentLanguageId,
   currentCurriculumVitaeId
 ) => {
-  let schoolService = new SchoolService();
+  let languageService = new LanguageService();
   console.log("---Updated---");
   console.log(values);
   console.log("---Updated---");
-  values.id = currentSchoolId;
+  values.id = currentLanguageId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
-  schoolService
+  languageService
     .update(values)
     .then((response) => {
       if (response.status === 200) {
-        toast.success("School updated successfully.");
+        toast.success("Language updated successfully.");
       }
     })
     .catch((reason) => {
@@ -24,4 +24,4 @@ const schoolOnSubmitUpdate = (
     });
 };
 
-export default schoolOnSubmitUpdate;
+export default languageOnSubmitUpdate;

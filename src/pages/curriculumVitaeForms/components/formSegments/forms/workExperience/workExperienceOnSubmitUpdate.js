@@ -1,22 +1,22 @@
 import { toast } from "react-toastify";
-import SchoolService from "./../../../../../../services/schoolService";
+import WorkExperienceService from "./../../../../../../services/workExperienceService";
 
-const schoolOnSubmitUpdate = (
+const workExperienceOnSubmitUpdate = (
   values,
-  currentSchoolId,
+  currentWorkExperienceId,
   currentCurriculumVitaeId
 ) => {
-  let schoolService = new SchoolService();
+  let workExperienceService = new WorkExperienceService();
   console.log("---Updated---");
   console.log(values);
   console.log("---Updated---");
-  values.id = currentSchoolId;
+  values.id = currentWorkExperienceId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
-  schoolService
+  workExperienceService
     .update(values)
     .then((response) => {
       if (response.status === 200) {
-        toast.success("School updated successfully.");
+        toast.success("Work experience updated successfully.");
       }
     })
     .catch((reason) => {
@@ -24,4 +24,4 @@ const schoolOnSubmitUpdate = (
     });
 };
 
-export default schoolOnSubmitUpdate;
+export default workExperienceOnSubmitUpdate;

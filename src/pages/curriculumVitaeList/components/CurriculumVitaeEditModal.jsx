@@ -65,6 +65,7 @@ export default function CurriculumVitaeEditModal({ currentCurriculumVitae }) {
           currentCurriculumVitae={currentCurriculumVitae}
         />
       }
+      actions={<p>Çıkmak için beyaz bölgenin dışına tıklayabilirsiniz.</p>}
     />
   );
 }

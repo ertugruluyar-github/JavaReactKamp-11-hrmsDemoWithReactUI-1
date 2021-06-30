@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
-import SchoolEditModal from "./../modals/SchoolEditModal";
+import SchoolEditModal from "./../modals/school/SchoolEditModal";
 import SchoolService from "./../../../../../services/schoolService";
-import SchoolAddModal from "./../modals/SchoolAddModal";
+import SchoolAddModal from "./../modals/school/SchoolAddModal";
 import DeleteModal from "../modals/DeleteModal";
 
 export default function SchoolsTable({ currentCurriculumVitaeId }) {

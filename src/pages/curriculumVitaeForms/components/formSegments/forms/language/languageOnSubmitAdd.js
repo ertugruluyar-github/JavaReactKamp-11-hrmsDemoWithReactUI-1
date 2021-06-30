@@ -1,17 +1,17 @@
 import { toast } from "react-toastify";
-import SchoolService from "./../../../../../../services/schoolService";
+import LanguageService from "./../../../../../../services/languageService";
 
-const schoolOnSubmitAdd = (values, currentCurriculumVitaeId) => {
-  let schoolService = new SchoolService();
+const languageOnSubmitAdd = (values, currentCurriculumVitaeId) => {
+  let languageService = new LanguageService();
   values.curriculumVitae.id = currentCurriculumVitaeId;
   console.log("---Added---");
   console.log(values);
   console.log("---Added---");
-  schoolService
+  languageService
     .add(values)
     .then((response) => {
       if (response.status === 200) {
-        toast.success("School added successfully.");
+        toast.success("Language added successfully.");
       }
     })
     .catch((reason) => {
@@ -19,4 +19,4 @@ const schoolOnSubmitAdd = (values, currentCurriculumVitaeId) => {
     });
 };
 
-export default schoolOnSubmitAdd;
+export default languageOnSubmitAdd;
