@@ -1,4 +1,4 @@
-const curriculumAddVitaeInitialValues = {
+const curriculumVitaeInitialValues = {
   description: "",
   githubLink: "",
   linkedinLink: "",
@@ -10,4 +10,4 @@ const curriculumAddVitaeInitialValues = {
   technologyKnowledges: [],
 };
 
-export default curriculumAddVitaeInitialValues;
+export default curriculumVitaeInitialValues;

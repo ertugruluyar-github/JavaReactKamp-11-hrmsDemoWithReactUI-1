@@ -5,7 +5,7 @@ const curriculumVitaeValidationSchema = Yup.object().shape({
   githubLink: Yup.string(),
   linkedinLink: Yup.string(),
   photoLink: Yup.string(),
-  schools: Yup.array(
+  schools: Yup.array().of(
     Yup.object().shape({
       name: Yup.string().required("Required"),
       department: Yup.string(),
@@ -16,7 +16,7 @@ const curriculumVitaeValidationSchema = Yup.object().shape({
       }),
     })
   ),
-  languages: Yup.array(
+  languages: Yup.array().of(
     Yup.object().shape({
       name: Yup.string().required("Required"),
       degree: Yup.number()
@@ -28,7 +28,7 @@ const curriculumVitaeValidationSchema = Yup.object().shape({
       }),
     })
   ),
-  workExperiences: Yup.array(
+  workExperiences: Yup.array().of(
     Yup.object().shape({
       workPlaceName: Yup.string().required("Required"),
       positionName: Yup.string().required("Required"),
@@ -39,7 +39,7 @@ const curriculumVitaeValidationSchema = Yup.object().shape({
       }),
     })
   ),
-  technologyKnowledges: Yup.array(
+  technologyKnowledges: Yup.array().of(
     Yup.object().shape({
       name: Yup.string().required("Required"),
       curriculumVitae: Yup.object().shape({

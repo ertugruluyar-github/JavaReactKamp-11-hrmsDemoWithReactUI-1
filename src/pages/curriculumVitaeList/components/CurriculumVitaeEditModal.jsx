@@ -3,6 +3,52 @@ import { Button, Modal, Icon } from "semantic-ui-react";
 import CurriculumVitaeUpdateForm from "./../../curriculumVitaeForms/CurriculumVitaeUpdateForm";
 
 export default function CurriculumVitaeEditModal({ currentCurriculumVitae }) {
+  /*
+  const [currentLanguages, setCurrentLanguages] = useState([]);
+  const [currentWorkExperiences, setCurrentWorkExperiences] = useState([]);
+  const [currentTechnologyKnowledges, setCurrentTechnologyKnowledges] =
+    useState([]);
+
+  useEffect(() => {
+    let languageService = new LanguageService();
+    let workExperienceService = new WorkExperienceService();
+    let technologyKnowledgeService = new TechnologyKnowledgeService();
+
+    languageService
+      .getLanguages()
+      .then((result) =>
+        setCurrentLanguages(
+          result.data.data.filter(
+            (language) =>
+              language.curriculumVitae.id === currentCurriculumVitae.id
+          )
+        )
+      );
+
+    workExperienceService
+      .getWorkExperiences()
+      .then((result) =>
+        setCurrentWorkExperiences(
+          result.data.data.filter(
+            (workExperience) =>
+              workExperience.curriculumVitae.id === currentCurriculumVitae.id
+          )
+        )
+      );
+
+    technologyKnowledgeService
+      .getTechnologyKnowledges()
+      .then((result) =>
+        setCurrentTechnologyKnowledges(
+          result.data.data.filter(
+            (technologyKnowledge) =>
+              technologyKnowledge.curriculumVitae.id ===
+              currentCurriculumVitae.id
+          )
+        )
+      );
+  }, [currentCurriculumVitae.id]);
+*/
   const [open, setOpen] = useState(false);
 
   let showModel = () => {
