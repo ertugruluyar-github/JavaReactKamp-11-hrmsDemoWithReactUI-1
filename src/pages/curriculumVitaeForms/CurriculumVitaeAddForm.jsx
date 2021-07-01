@@ -1,10 +1,11 @@
 import React from "react";
 import { useFormik } from "formik";
-import curriculumVitaeOnSubmit from "./components/curriculumVitaeOnSubmit";
 import curriculumVitaeValidationSchema from "./components/curriculumVitaeValidationSchema";
 import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeInitialValues from "./components/curriculumVitaeInitialValues";
 import { useHistory } from "react-router-dom";
+import CurriculumVitaeService from "./../../services/curriculumVitaeService";
+import customOnSubmit from './../../utilities/customOnSubmit';
 
 export default function CurriculumVitaeAddForm() {
   const { currentJobSeekerId } = useParams();
@@ -15,11 +16,15 @@ export default function CurriculumVitaeAddForm() {
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
       values.jobSeeker.id = currentJobSeekerId;
-      curriculumVitaeOnSubmit(values, "Curriculum vitae added successfully.");
+      customOnSubmit(
+        new CurriculumVitaeService(),
+        values,
+        "Curriculum vitae added successfully."
+      );
       history.push("/curriculumvitaelist");
     },
   });
-  
+
   return (
     <CurriculumVitaeForm
       headerIconName="paperclip"

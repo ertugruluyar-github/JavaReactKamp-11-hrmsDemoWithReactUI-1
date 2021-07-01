@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import curriculumVitaeOnSubmit from "./components/curriculumVitaeOnSubmit";
 import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeValidationSchema from "./components/curriculumVitaeValidationSchema";
+import CurriculumVitaeService from "./../../services/curriculumVitaeService";
+import customOnSubmit from "./../../utilities/customOnSubmit";
 
 export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
   const currentInitialValues = {
@@ -17,7 +19,11 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     initialValues: currentInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
-      curriculumVitaeOnSubmit(values, "Curriculum vitae updated successfully.");
+      customOnSubmit(
+        new CurriculumVitaeService(),
+        values,
+        "Curriculum vitae updated successfully."
+      );
     },
   });
 
