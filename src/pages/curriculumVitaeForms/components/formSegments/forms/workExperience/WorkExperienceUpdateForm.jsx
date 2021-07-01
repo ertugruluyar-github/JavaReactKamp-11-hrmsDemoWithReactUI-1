@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import workExperienceValidationShema from "./workExperienceValidationSchema";
 import WorkExperienceForm from "./WorkExperienceForm";
 import WorkExperienceService from "./../../../../../../services/workExperienceService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitUpdate from "../../../../../../utilities/customOnSubmitUpdate";
 
 export default function WorkExperienceUpdateForm({ currentWorkExperience }) {
   let workExperienceUpdateFormik = useFormik({
@@ -11,7 +11,7 @@ export default function WorkExperienceUpdateForm({ currentWorkExperience }) {
     validationSchema: workExperienceValidationShema,
     onSubmit: (values) => {
       values.curriculumVitae.id = currentWorkExperience.curriculumVitae.id;
-      customOnSubmit(
+      customOnSubmitUpdate(
         new WorkExperienceService(),
         values,
         "Work experience updated successfully."
@@ -23,8 +23,8 @@ export default function WorkExperienceUpdateForm({ currentWorkExperience }) {
     <WorkExperienceForm
       headerIconName="map marker alternate"
       headerContent="Update Work Experience"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Update"
+      submitButtonIconName="save"
+      submitButtonText="Update"
       formik={workExperienceUpdateFormik}
     />
   );

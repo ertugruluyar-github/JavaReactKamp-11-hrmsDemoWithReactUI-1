@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import technologyKnowledgeValidationShema from "./technologyKnowledgeValidationSchema";
 import TechnologyKnowledgeForm from "./TechnologyKnowledgeForm";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitUpdate from "../../../../../../utilities/customOnSubmitUpdate";
 import TechnologyKnowledgeService from "./../../../../../../services/technologyKnowledgeService";
 
 export default function TechnologyKnowledgeUpdateForm({
@@ -13,7 +13,7 @@ export default function TechnologyKnowledgeUpdateForm({
     validationSchema: technologyKnowledgeValidationShema,
     onSubmit: (values) => {
       values.curriculumVitae.id = currentTechnologyKnowledge.curriculumVitae.id;
-      customOnSubmit(
+      customOnSubmitUpdate(
         new TechnologyKnowledgeService(),
         values,
         "Technology knowledge updated successfully."
@@ -25,8 +25,8 @@ export default function TechnologyKnowledgeUpdateForm({
     <TechnologyKnowledgeForm
       headerIconName="thumbtack"
       headerContent="Update Technology Knowledge"
-      SubmitButTonIconName="save"
-      SubmitButTonText="Update"
+      submitButtonIconName="save"
+      submitButTonText="Update"
       formik={technologyKnowledgeUpdateFormik}
     />
   );

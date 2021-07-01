@@ -5,8 +5,8 @@ export default function SchoolForm({
   formKey,
   headerIconName,
   headerContent,
-  SubmitButtonIconName,
-  SubmitButtonText,
+  submitButtonIconName,
+  submitButtonText,
   formik,
 }) {
   return (
@@ -84,9 +84,9 @@ export default function SchoolForm({
             fluid
           >
             <Button.Content visible>
-              <Icon name={SubmitButtonIconName} />
+              <Icon name={submitButtonIconName} />
             </Button.Content>
-            <Button.Content hidden>{SubmitButtonText}</Button.Content>
+            <Button.Content hidden>{submitButtonText}</Button.Content>
           </Form.Button>
         </Segment>
       </Form>

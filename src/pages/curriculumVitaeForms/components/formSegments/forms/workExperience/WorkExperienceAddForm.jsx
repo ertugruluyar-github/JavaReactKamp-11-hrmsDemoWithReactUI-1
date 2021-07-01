@@ -4,7 +4,7 @@ import workExperienceValidationShema from "./workExperienceValidationSchema";
 import WorkExperienceForm from "./WorkExperienceForm";
 import workExperienceInitialValues from "./workExperienceInitialValues";
 import WorkExperienceService from "./../../../../../../services/workExperienceService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitAdd from "../../../../../../utilities/customOnSubmitAdd";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function WorkExperienceAddForm() {
@@ -17,7 +17,7 @@ export default function WorkExperienceAddForm() {
     onSubmit: (values) => {
       values.curriculumVitae.id = currentCurriculumVitaeId;
       console.log(values);
-      customOnSubmit(
+      customOnSubmitAdd(
         new WorkExperienceService(),
         values,
         "Work experience added successfully."

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import schoolValidationShema from "./schoolValidationSchema";
 import SchoolForm from "./SchoolForm";
 import SchoolService from "./../../../../../../services/schoolService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitUpdate from "../../../../../../utilities/customOnSubmitUpdate";
 
 export default function SchoolUpdateForm({ currentSchool }) {
   let schoolUpdateFormik = useFormik({
@@ -11,7 +11,7 @@ export default function SchoolUpdateForm({ currentSchool }) {
     validationSchema: schoolValidationShema,
     onSubmit: (values) => {
       values.curriculumVitae.id = currentSchool.curriculumVitae.id;
-      customOnSubmit(
+      customOnSubmitUpdate(
         new SchoolService(),
         values,
         "School updated successfully."
@@ -24,8 +24,8 @@ export default function SchoolUpdateForm({ currentSchool }) {
       formKey="SchoolUpdateForm"
       headerIconName="graduation"
       headerContent="Update School"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Update"
+      submitButtonIconName="save"
+      submitButtonText="Update"
       formik={schoolUpdateFormik}
     />
   );

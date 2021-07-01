@@ -12,7 +12,7 @@ export default function DeleteModal({ service, entityId }) {
       trigger={
         <Button negative animated="fade" circular>
           <Button.Content visible>
-            <Icon name="delete" />
+            <Icon name="trash" />
           </Button.Content>
           <Button.Content hidden>Delete</Button.Content>
         </Button>

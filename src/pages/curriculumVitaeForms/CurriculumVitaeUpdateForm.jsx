@@ -1,13 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import curriculumVitaeOnSubmit from "./components/curriculumVitaeOnSubmit";
 import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeValidationSchema from "./components/curriculumVitaeValidationSchema";
 import CurriculumVitaeService from "./../../services/curriculumVitaeService";
-import customOnSubmit from "./../../utilities/customOnSubmit";
+import customOnSubmitUpdate from "../../utilities/customOnSubmitUpdate";
 
 export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
   const currentInitialValues = {
+    id: currentCurriculumVitae.id,
     description: currentCurriculumVitae.description,
     githubLink: currentCurriculumVitae.githubLink,
     linkedinLink: currentCurriculumVitae.linkedinLink,
@@ -19,7 +19,8 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     initialValues: currentInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
-      customOnSubmit(
+      console.log(values)
+      customOnSubmitUpdate(
         new CurriculumVitaeService(),
         values,
         "Curriculum vitae updated successfully."

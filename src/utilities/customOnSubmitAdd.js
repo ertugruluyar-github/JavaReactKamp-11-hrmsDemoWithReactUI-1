@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 
-const customOnSubmit = (service, values, message) => {
+const customOnSubmitAdd = (service, values, message) => {
   service
-    .update(values)
+    .add(values)
     .then((response) => {
       if (response.status === 200) {
         toast.success(message);
@@ -13,4 +13,4 @@ const customOnSubmit = (service, values, message) => {
     });
 };
 
-export default customOnSubmit;
+export default customOnSubmitAdd;

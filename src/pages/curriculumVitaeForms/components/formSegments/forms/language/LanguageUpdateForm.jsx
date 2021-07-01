@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import languageValidationShema from "./languageValidationSchema";
 import LanguageForm from "./LanguageForm";
 import LanguageService from "./../../../../../../services/languageService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitUpdate from "../../../../../../utilities/customOnSubmitUpdate";
 
 export default function LanguageUpdateForm({ currentLanguage }) {
   let languageUpdateFormik = useFormik({
@@ -11,7 +11,7 @@ export default function LanguageUpdateForm({ currentLanguage }) {
     validationSchema: languageValidationShema,
     onSubmit: (values) => {
       values.curriculumVitae.id = currentLanguage.curriculumVitae.id;
-      customOnSubmit(
+      customOnSubmitUpdate(
         new LanguageService(),
         values,
         "Language updated successfully."
@@ -23,8 +23,8 @@ export default function LanguageUpdateForm({ currentLanguage }) {
     <LanguageForm
       headerIconName="world"
       headerContent="Update Language"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Update"
+      submitButtonIconName="save"
+      submitButtonText="Update"
       formik={languageUpdateFormik}
     />
   );

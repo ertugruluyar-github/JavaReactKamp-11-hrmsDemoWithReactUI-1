@@ -5,7 +5,7 @@ import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeInitialValues from "./components/curriculumVitaeInitialValues";
 import { useHistory } from "react-router-dom";
 import CurriculumVitaeService from "./../../services/curriculumVitaeService";
-import customOnSubmit from './../../utilities/customOnSubmit';
+import customOnSubmitAdd from '../../utilities/customOnSubmitAdd';
 
 export default function CurriculumVitaeAddForm() {
   const { currentJobSeekerId } = useParams();
@@ -16,7 +16,7 @@ export default function CurriculumVitaeAddForm() {
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
       values.jobSeeker.id = currentJobSeekerId;
-      customOnSubmit(
+      customOnSubmitAdd(
         new CurriculumVitaeService(),
         values,
         "Curriculum vitae added successfully."

@@ -4,7 +4,7 @@ import languageValidationShema from "./languageValidationSchema";
 import LanguageForm from "./LanguageForm";
 import languageInitialValues from "./languageInitialValues";
 import LanguageService from "./../../../../../../services/languageService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitAdd from "../../../../../../utilities/customOnSubmitAdd";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function LanguageAddForm() {
@@ -17,7 +17,7 @@ export default function LanguageAddForm() {
     onSubmit: (values) => {
       values.curriculumVitae.id = currentCurriculumVitaeId;
       console.log(values);
-      customOnSubmit(
+      customOnSubmitAdd(
         new LanguageService(),
         values,
         "Language added successfully."

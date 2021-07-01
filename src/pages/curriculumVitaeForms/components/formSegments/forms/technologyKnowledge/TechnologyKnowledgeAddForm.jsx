@@ -4,7 +4,7 @@ import languageValidationShema from "./technologyKnowledgeValidationSchema";
 import LanguageForm from "./TechnologyKnowledgeForm";
 import languageInitialValues from "./technologyKnowledgeInitialValues";
 import TechnologyKnowledgeService from "./../../../../../../services/technologyKnowledgeService";
-import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import customOnSubmitAdd from "../../../../../../utilities/customOnSubmitAdd";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function LanguageAddForm() {
@@ -17,7 +17,7 @@ export default function LanguageAddForm() {
     onSubmit: (values) => {
       values.curriculumVitae.id = currentCurriculumVitaeId;
       console.log(values);
-      customOnSubmit(
+      customOnSubmitAdd(
         new TechnologyKnowledgeService(),
         values,
         "Technology knowledge added successfully."
