@@ -30,8 +30,8 @@ export default function WorkExperienceAddForm() {
     <WorkExperienceForm
       headerIconName="map marker alternate"
       headerContent="Add Work Experience"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Add"
+      submitButtonIconName="save"
+      submitButtonText="Add"
       formik={workExperienceAddFormik}
     />
   );

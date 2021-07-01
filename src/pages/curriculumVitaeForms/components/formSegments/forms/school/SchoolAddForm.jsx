@@ -31,8 +31,8 @@ export default function SchoolAddForm() {
       formKey="SchoolAddForm"
       headerIconName="graduation"
       headerContent="Add School"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Add"
+      submitButtonIconName="save"
+      submitButtonText="Add"
       formik={schoolAddFormik}
     />
   );

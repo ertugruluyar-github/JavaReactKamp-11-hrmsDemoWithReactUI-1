@@ -1,42 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import systemEmployeeOnSubmitUpdate from "./components/systemEmployeeOnSubmitUpdate";
 import SystemEmployeeForm from "./components/SystemEmployeeForm";
 import systemEmployeeValidationSchema from "./components/systemEmployeeValidationSchema";
 import SystemEmployeeService from "./../../services/systemEmployeeService";
-import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 import systemEmployeeInitialValues from "./components/systemEmployeeInitialValues";
+import customOnSubmitUpdate from "./../../utilities/customOnSubmitUpdate";
 
-export default function SystemEmployeeUpdateForm() {
-  const { currentSystemEmployeeId } = useParams();
-  const [currentSystemEmployee, setCurrentSystemEmployee] = useState({});
+export default function SystemEmployeeUpdateForm({ currentSystemEmployee }) {
+  //const history = useHistory();
 
-  useEffect(() => {
-    let systemEmployeeService = new SystemEmployeeService();
-    systemEmployeeService
-      .get(currentSystemEmployeeId)
-      .then((result) => setCurrentSystemEmployee(result.data.data));
-  }, [currentSystemEmployeeId]);
-
-  const formik = useFormik({
-    initialValues: systemEmployeeInitialValues,
-    validationSchema: systemEmployeeValidationSchema,
-    onSubmit: (values) => {
-      systemEmployeeOnSubmitUpdate(
-        values,
-        currentSystemEmployee.id,
-        currentSystemEmployee.jobSeeker.id
-      );
-    },
-  });
-
+  /*
   useEffect(() => {
     formik.setValues(currentSystemEmployee);
   }, [currentSystemEmployee]);
-  /*
+  */
+
   let currentInitialValues = currentSystemEmployee
     ? {
+        id: currentSystemEmployee.id,
         firstName: currentSystemEmployee.firstName,
         lastName: currentSystemEmployee.lastName,
         nationalityId: currentSystemEmployee.nationalityId,
@@ -46,7 +29,20 @@ export default function SystemEmployeeUpdateForm() {
         password: currentSystemEmployee.password,
       }
     : systemEmployeeInitialValues;
-*/
+
+  const formik = useFormik({
+    initialValues: currentInitialValues,
+    validationSchema: systemEmployeeValidationSchema,
+    onSubmit: (values) => {
+      customOnSubmitUpdate(
+        new SystemEmployeeService(),
+        values,
+        "System employee updated successfully."
+      );
+      //history.push("/systememployeelist");
+    },
+  });
+
   console.log(formik.values);
 
   return currentSystemEmployee ? (

@@ -30,8 +30,8 @@ export default function LanguageAddForm() {
     <LanguageForm
       headerIconName="world"
       headerContent="Add Language"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Add"
+      submitButtonIconName="save"
+      submitButtonText="Add"
       formik={languageAddFormik}
     />
   );

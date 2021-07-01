@@ -5,6 +5,8 @@ import systemEmployeeValidationSchema from "./components/systemEmployeeValidatio
 import SystemEmployeeForm from "./components/SystemEmployeeForm";
 import systemEmployeeInitialValues from "./components/systemEmployeeInitialValues";
 import { useHistory } from "react-router-dom";
+import customOnSubmitAdd from "./../../utilities/customOnSubmitAdd";
+import SystemEmployeeService from "./../../services/systemEmployeeService";
 
 export default function SystemEmployeeAddForm() {
   let history = useHistory();
@@ -13,7 +15,12 @@ export default function SystemEmployeeAddForm() {
     initialValues: systemEmployeeInitialValues,
     validationSchema: systemEmployeeValidationSchema,
     onSubmit: (values) => {
-      systemEmployeeOnSubmitAdd(values, history);
+      customOnSubmitAdd(
+        new SystemEmployeeService(),
+        values,
+        "System employee added successfully."
+      );
+      history.push("/systememployeelist");
     },
   });
   return (

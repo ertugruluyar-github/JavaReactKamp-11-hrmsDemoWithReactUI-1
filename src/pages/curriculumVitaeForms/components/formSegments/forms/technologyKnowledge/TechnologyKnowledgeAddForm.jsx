@@ -1,19 +1,19 @@
 import React from "react";
 import { useFormik } from "formik";
-import languageValidationShema from "./technologyKnowledgeValidationSchema";
-import LanguageForm from "./TechnologyKnowledgeForm";
-import languageInitialValues from "./technologyKnowledgeInitialValues";
+import technologyKnowledgeValidationShema from "./technologyKnowledgeValidationSchema";
+import TechnologyKnowledgeForm from "./TechnologyKnowledgeForm";
+import technologyKnowledgeInitialValues from "./technologyKnowledgeInitialValues";
 import TechnologyKnowledgeService from "./../../../../../../services/technologyKnowledgeService";
 import customOnSubmitAdd from "../../../../../../utilities/customOnSubmitAdd";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function LanguageAddForm() {
+export default function TechnologyKnowledgeAddForm() {
   const { currentCurriculumVitaeId } = useParams();
   const history = useHistory();
   
-  let languageAddFormik = useFormik({
-    initialValues: languageInitialValues,
-    validationSchema: languageValidationShema,
+  let technologyKnowledgeAddFormik = useFormik({
+    initialValues: technologyKnowledgeInitialValues,
+    validationSchema: technologyKnowledgeValidationShema,
     onSubmit: (values) => {
       values.curriculumVitae.id = currentCurriculumVitaeId;
       console.log(values);
@@ -27,12 +27,12 @@ export default function LanguageAddForm() {
   });
 
   return (
-    <LanguageForm
+    <TechnologyKnowledgeForm
       headerIconName="thumbtack"
-      headerContent="Add Language"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Add"
-      formik={languageAddFormik}
+      headerContent="Add Technology Knowledge"
+      submitButtonIconName="save"
+      submitButtonText="Add"
+      formik={technologyKnowledgeAddFormik}
     />
   );
 }
