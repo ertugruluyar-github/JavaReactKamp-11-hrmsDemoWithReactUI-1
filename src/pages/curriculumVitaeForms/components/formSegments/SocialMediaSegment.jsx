@@ -13,7 +13,7 @@ export default function SocialMediaSegment({ formik }) {
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.githubLink}
+          value={formik.values?.githubLink}
           placeholder="https://github.com/username"
           width={8}
         />
@@ -26,7 +26,7 @@ export default function SocialMediaSegment({ formik }) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.linkedinLink}
-          error={formik.errors.linkedinLink}
+          error={formik.errors?.linkedinLink}
           placeholder="https://www.linkedin.com/in/username"
           width={8}
         />

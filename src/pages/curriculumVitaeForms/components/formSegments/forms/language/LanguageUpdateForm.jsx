@@ -9,11 +9,7 @@ export default function LanguageUpdateForm({ currentLanguage }) {
     initialValues: currentLanguage,
     validationSchema: languageValidationShema,
     onSubmit: (values) => {
-      languageOnSubmitUpdate(
-        values,
-        currentLanguage.id,
-        currentLanguage.curriculumVitae.id
-      );
+      languageOnSubmitUpdate(values, currentLanguage.curriculumVitae.id);
     },
   });
 

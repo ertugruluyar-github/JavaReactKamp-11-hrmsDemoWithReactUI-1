@@ -6,23 +6,19 @@ import SystemEmployeeForm from "./components/SystemEmployeeForm";
 import systemEmployeeInitialValues from "./components/systemEmployeeInitialValues";
 import { useHistory } from "react-router-dom";
 
-export default function SystemEmployeeAddForm({ currentSystemEmployee }) {
+export default function SystemEmployeeAddForm() {
   let history = useHistory();
+
   const formik = useFormik({
     initialValues: systemEmployeeInitialValues,
     validationSchema: systemEmployeeValidationSchema,
     onSubmit: (values) => {
-      systemEmployeeOnSubmitAdd(
-        values,
-        history,
-        currentSystemEmployee.id,
-        currentSystemEmployee.jobSeeker.id
-      );
+      systemEmployeeOnSubmitAdd(values, history);
     },
   });
   return (
     <SystemEmployeeForm
-      headerIconName="building"
+      headerIconName="id badge"
       headerContent="Add System Employee"
       SubmitButtonIconName="save"
       SubmitButtonText="Add"

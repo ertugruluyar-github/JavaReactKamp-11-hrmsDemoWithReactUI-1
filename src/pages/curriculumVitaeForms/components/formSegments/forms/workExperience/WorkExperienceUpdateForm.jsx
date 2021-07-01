@@ -11,7 +11,6 @@ export default function WorkExperienceUpdateForm({ currentWorkExperience }) {
     onSubmit: (values) => {
       workExperienceOnSubmitUpdate(
         values,
-        currentWorkExperience.id,
         currentWorkExperience.curriculumVitae.id
       );
     },

@@ -3,14 +3,12 @@ import TechnologyKnowledgeService from "../../../../../../services/technologyKno
 
 const technologyKnowledgeOnSubmitUpdate = (
   values,
-  currentTechnologyKnowledgeId,
   currentCurriculumVitaeId
 ) => {
   let technologyKnowledgeService = new TechnologyKnowledgeService();
   console.log("---Updated---");
   console.log(values);
   console.log("---Updated---");
-  values.id = currentTechnologyKnowledgeId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
   technologyKnowledgeService
     .update(values)

@@ -4,14 +4,15 @@ import technologyKnowledgeValidationShema from "./technologyKnowledgeValidationS
 import technologyKnowledgeOnSubmitUpdate from "./technologyKnowledgeOnSubmitUpdate";
 import TechnologyKnowledgeForm from "./TechnologyKnowledgeForm";
 
-export default function TechnologyKnowledgeUpdateForm({ currentTechnologyKnowledge }) {
+export default function TechnologyKnowledgeUpdateForm({
+  currentTechnologyKnowledge,
+}) {
   let technologyKnowledgeUpdateFormik = useFormik({
     initialValues: currentTechnologyKnowledge,
     validationSchema: technologyKnowledgeValidationShema,
     onSubmit: (values) => {
       technologyKnowledgeOnSubmitUpdate(
         values,
-        currentTechnologyKnowledge.id,
         currentTechnologyKnowledge.curriculumVitae.id
       );
     },

@@ -6,18 +6,14 @@ import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeInitialValues from "./components/curriculumVitaeInitialValues";
 import { useHistory } from "react-router-dom";
 
-export default function CurriculumVitaeAddForm({ currentCurriculumVitae }) {
-  let history = useHistory();
+export default function CurriculumVitaeAddForm() {
+  const { currentJobSeekerId } = useParams();
+  const history = useHistory();
   const formik = useFormik({
     initialValues: curriculumVitaeInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
-      curriculumVitaeOnSubmitAdd(
-        values,
-        history,
-        currentCurriculumVitae.id,
-        currentCurriculumVitae.jobSeeker.id
-      );
+      curriculumVitaeOnSubmitAdd(values, history, currentJobSeekerId);
     },
   });
   return (

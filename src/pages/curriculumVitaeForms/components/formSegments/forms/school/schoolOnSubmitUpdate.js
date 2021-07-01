@@ -1,16 +1,11 @@
 import { toast } from "react-toastify";
 import SchoolService from "./../../../../../../services/schoolService";
 
-const schoolOnSubmitUpdate = (
-  values,
-  currentSchoolId,
-  currentCurriculumVitaeId
-) => {
+const schoolOnSubmitUpdate = (values, currentCurriculumVitaeId) => {
   let schoolService = new SchoolService();
   console.log("---Updated---");
   console.log(values);
   console.log("---Updated---");
-  values.id = currentSchoolId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
   schoolService
     .update(values)

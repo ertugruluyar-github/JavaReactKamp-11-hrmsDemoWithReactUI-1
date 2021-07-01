@@ -9,16 +9,13 @@ export default function SchoolUpdateForm({ currentSchool }) {
     initialValues: currentSchool,
     validationSchema: schoolValidationShema,
     onSubmit: (values) => {
-      schoolOnSubmitUpdate(
-        values,
-        currentSchool.id,
-        currentSchool.curriculumVitae.id
-      );
+      schoolOnSubmitUpdate(values, currentSchool.curriculumVitae.id);
     },
   });
 
   return (
     <SchoolForm
+      formKey="SchoolUpdateForm"
       headerIconName="graduation"
       headerContent="Update School"
       SubmitButtonIconName="save"

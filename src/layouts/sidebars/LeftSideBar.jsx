@@ -69,15 +69,15 @@ export default function LeftSideBar() {
       />
 
       <Popup
-        key={6}
-        content="Curriculum Vitae Update Form"
+        key={7}
+        content="System Employee Update Form"
         position="right center"
         trigger={
           <Menu.Item
-            key={6}
+            key={7}
             as={NavLink}
-            to="/curriculumvitaes/id=:id/update"
-            icon="box"
+            to="/systememployees/8/update"
+            icon="id badge"
           />
         }
       />

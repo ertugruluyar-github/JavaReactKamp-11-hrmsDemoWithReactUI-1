@@ -1,9 +1,6 @@
-import React from 'react'
+import React from "react";
+import SystemEmployeeAddForm from "../../../pages/systemeEmployeeForms/SystemEmployeeAddForm";
 
 export default function CurriculumVitaeAddFormDashboard() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <SystemEmployeeAddForm />;
 }

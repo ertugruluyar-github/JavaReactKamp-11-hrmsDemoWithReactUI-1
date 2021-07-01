@@ -3,18 +3,20 @@ import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import SchoolEditModal from "./../modals/school/SchoolEditModal";
 import SchoolService from "./../../../../../services/schoolService";
 import SchoolAddModal from "./../modals/school/SchoolAddModal";
-import DeleteModal from './../../../../../utilities/DeleteModal';
+import DeleteModal from "./../../../../../utilities/DeleteModal";
 
 export default function SchoolsTable({ currentCurriculumVitaeId }) {
-  const [currentSchools, setCurrentSchools] = useState([
-    {
+  const [currentSchools, setCurrentSchools] = useState([]);
+
+  /*
+  {
       name: "",
       department: "",
       startDate: "",
       endDate: "",
       curriculumVitae: { id: "" },
-    },
-  ]);
+    }
+  */
 
   useEffect(() => {
     let schoolService = new SchoolService();

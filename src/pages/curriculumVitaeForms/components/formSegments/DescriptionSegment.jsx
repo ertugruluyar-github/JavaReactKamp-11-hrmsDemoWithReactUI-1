@@ -12,7 +12,7 @@ export default function DescriptionSegment({ formik }) {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.description}
-        error={formik.errors.description}
+        error={formik.errors?.description}
         placeholder="Tell us your curriculum vitae description."
       />
     </Segment>

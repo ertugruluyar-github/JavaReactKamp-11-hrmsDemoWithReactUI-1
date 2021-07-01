@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import TechnologyKnowledgeEditModal from "./../modals/technologyKnowledge/TechnologyKnowledgeEditModal";
 import TechnologyKnowledgeAddModal from "./../modals/technologyKnowledge/TechnologyKnowledgeAddModal";
-import TechnologyKnowledgeService from './../../../../../services/technologyKnowledgeService';
-import DeleteModal from './../../../../../utilities/DeleteModal';
+import TechnologyKnowledgeService from "./../../../../../services/technologyKnowledgeService";
+import DeleteModal from "./../../../../../utilities/DeleteModal";
 
-export default function TechnologyKnowledgesTable({ currentCurriculumVitaeId }) {
-  const [currentTechnologyKnowledges, setCurrentTechnologyKnowledges] = useState([
-    {
+export default function TechnologyKnowledgesTable({
+  currentCurriculumVitaeId,
+}) {
+  const [currentTechnologyKnowledges, setCurrentTechnologyKnowledges] =
+    useState([]);
+
+  /*
+  {
       name: "",
       curriculumVitae: { id: "" },
-    },
-  ]);
+  }
+  */
 
   useEffect(() => {
     let technologyKnowledgeService = new TechnologyKnowledgeService();
@@ -21,7 +26,9 @@ export default function TechnologyKnowledgesTable({ currentCurriculumVitaeId }) 
       .then((result) =>
         setCurrentTechnologyKnowledges(
           result.data.data.filter(
-            (technologyKnowledge) => technologyKnowledge.curriculumVitae.id === currentCurriculumVitaeId
+            (technologyKnowledge) =>
+              technologyKnowledge.curriculumVitae.id ===
+              currentCurriculumVitaeId
           )
         )
       );
@@ -48,7 +55,9 @@ export default function TechnologyKnowledgesTable({ currentCurriculumVitaeId }) 
           {currentTechnologyKnowledges.map((technologyKnowledge, index) => (
             <Table.Row textAlign="center" key={index}>
               <Table.Cell>
-                <TechnologyKnowledgeEditModal currentTechnologyKnowledge={technologyKnowledge} />
+                <TechnologyKnowledgeEditModal
+                  currentTechnologyKnowledge={technologyKnowledge}
+                />
               </Table.Cell>
               <Table.Cell>{technologyKnowledge.name}</Table.Cell>
               <Table.Cell>
@@ -66,7 +75,10 @@ export default function TechnologyKnowledgesTable({ currentCurriculumVitaeId }) 
             <Table.HeaderCell colSpan="6">
               <Segment floated="left">
                 <Icon name="info circle" color="blue" size="large" />
-                <span>{currentTechnologyKnowledges.length} technology knowledges listed.</span>
+                <span>
+                  {currentTechnologyKnowledges.length} technology knowledges
+                  listed.
+                </span>
               </Segment>
               <Label tag color="olive">
                 <TechnologyKnowledgeAddModal

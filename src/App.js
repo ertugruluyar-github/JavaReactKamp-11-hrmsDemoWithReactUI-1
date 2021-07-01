@@ -48,7 +48,7 @@ function App() {
               
               <Route
                 exact
-                path="//curriculumvitaes/id=:id/update"
+                path="/systememployees/:currentSystemEmployeeId/update"
                 component={CurriculumVitaeUpdateFormDashboard}
               />
 

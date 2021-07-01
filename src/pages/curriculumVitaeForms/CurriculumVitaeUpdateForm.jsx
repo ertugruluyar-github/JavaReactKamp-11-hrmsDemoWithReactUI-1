@@ -10,9 +10,9 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     githubLink: currentCurriculumVitae.githubLink,
     linkedinLink: currentCurriculumVitae.linkedinLink,
     photoLink: currentCurriculumVitae.photoLink,
-    jobSeeker: currentCurriculumVitae.jobSeeker,
+    jobSeeker: { id: currentCurriculumVitae.jobSeeker.id },
   };
-  
+
   const formik = useFormik({
     initialValues: currentInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
@@ -24,10 +24,6 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
       );
     },
   });
-  //console.log("AAA2: " + currentInitialValues.schools[0].name);
-  //console.log(curriculumVitaeInitialValues.schools.name)
-  //console.log(formik.values.schools);
-  //console.log(formik.errors.schools?.name);
 
   return (
     <CurriculumVitaeForm

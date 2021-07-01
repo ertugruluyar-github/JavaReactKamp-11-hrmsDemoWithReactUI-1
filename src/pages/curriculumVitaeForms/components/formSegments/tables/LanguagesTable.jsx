@@ -3,16 +3,17 @@ import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
 import LanguageEditModal from "./../modals/language/LanguageEditModal";
 import LanguageService from "./../../../../../services/languageService";
 import LanguageAddModal from "./../modals/language/LanguageAddModal";
-import DeleteModal from './../../../../../utilities/DeleteModal';
+import DeleteModal from "./../../../../../utilities/DeleteModal";
 
 export default function LanguagesTable({ currentCurriculumVitaeId }) {
-  const [currentLanguages, setCurrentLanguages] = useState([
-    {
+  const [currentLanguages, setCurrentLanguages] = useState([]);
+  /*
+  {
       name: "",
       degree: "",
       curriculumVitae: { id: "" },
-    },
-  ]);
+    }
+  */
 
   useEffect(() => {
     let languageService = new LanguageService();
@@ -22,7 +23,8 @@ export default function LanguagesTable({ currentCurriculumVitaeId }) {
       .then((result) =>
         setCurrentLanguages(
           result.data.data.filter(
-            (language) => language.curriculumVitae.id === currentCurriculumVitaeId
+            (language) =>
+              language.curriculumVitae.id === currentCurriculumVitaeId
           )
         )
       );

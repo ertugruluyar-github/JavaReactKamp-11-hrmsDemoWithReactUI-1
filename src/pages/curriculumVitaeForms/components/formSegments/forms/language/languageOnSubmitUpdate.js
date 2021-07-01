@@ -1,16 +1,11 @@
 import { toast } from "react-toastify";
 import LanguageService from "../../../../../../services/languageService";
 
-const languageOnSubmitUpdate = (
-  values,
-  currentLanguageId,
-  currentCurriculumVitaeId
-) => {
+const languageOnSubmitUpdate = (values, currentCurriculumVitaeId) => {
   let languageService = new LanguageService();
   console.log("---Updated---");
   console.log(values);
   console.log("---Updated---");
-  values.id = currentLanguageId;
   values.curriculumVitae.id = currentCurriculumVitaeId;
   languageService
     .update(values)

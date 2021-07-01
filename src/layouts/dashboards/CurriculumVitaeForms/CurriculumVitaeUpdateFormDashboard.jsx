@@ -1,6 +1,6 @@
 import React from "react";
-import CurriculumVitaeForm from './../../../pages/curriculumVitaeForms/components/CurriculumVitaeForm';
+import SystemEmployeeUpdateForm from './../../../pages/systemeEmployeeForms/SystemEmployeeUpdateForm';
 
 export default function CurriculumVitaeUpdateFormDashboard() {
-  return <CurriculumVitaeForm />;
+  return <SystemEmployeeUpdateForm />;
 }

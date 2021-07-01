@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Header, Segment, Table, Icon, Label } from "semantic-ui-react";
-import DeleteModal from './../../../../../utilities/DeleteModal';
+import DeleteModal from "./../../../../../utilities/DeleteModal";
 import WorkExperienceService from "./../../../../../services/workExperienceService";
 import WorkExperienceEditModal from "./../modals/workExperience/WorkExperienceEditModal";
 import WorkExperienceAddModal from "./../modals/workExperience/WorkExperienceAddModal";
 
 export default function WorkExperiencesTable({ currentCurriculumVitaeId }) {
-  const [currentWorkExperiences, setCurrentWorkExperiences] = useState([
-    {
+  const [currentWorkExperiences, setCurrentWorkExperiences] = useState([]);
+  /*
+  {
       workPlaceName: "",
       positionName: "",
       startDate: "",
       endDate: "",
       curriculumVitae: { id: "" },
-    },
-  ]);
-
+  }
+  */
+ 
   useEffect(() => {
     let workExperienceService = new WorkExperienceService();
 
@@ -45,6 +46,8 @@ export default function WorkExperiencesTable({ currentCurriculumVitaeId }) {
             <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Work Place Name</Table.HeaderCell>
             <Table.HeaderCell>Position Name</Table.HeaderCell>
+            <Table.HeaderCell>Start Date</Table.HeaderCell>
+            <Table.HeaderCell>End Date</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -59,6 +62,8 @@ export default function WorkExperiencesTable({ currentCurriculumVitaeId }) {
               </Table.Cell>
               <Table.Cell>{workExperience.workPlaceName}</Table.Cell>
               <Table.Cell>{workExperience.positionName}</Table.Cell>
+              <Table.Cell>{workExperience.startDate}</Table.Cell>
+              <Table.Cell>{workExperience.endDate}</Table.Cell>
               <Table.Cell>
                 <DeleteModal
                   service={new WorkExperienceService()}
