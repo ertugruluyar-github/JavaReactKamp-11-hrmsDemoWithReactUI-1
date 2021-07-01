@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import curriculumVitaeOnSubmitUpdate from "./components/curriculumVitaeOnSubmitUpdate";
+import curriculumVitaeOnSubmit from "./components/curriculumVitaeOnSubmit";
 import CurriculumVitaeForm from "./components/CurriculumVitaeForm";
 import curriculumVitaeValidationSchema from "./components/curriculumVitaeValidationSchema";
 
@@ -17,11 +17,7 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     initialValues: currentInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
-      curriculumVitaeOnSubmitUpdate(
-        values,
-        currentCurriculumVitae.id,
-        currentCurriculumVitae.jobSeeker.id
-      );
+      curriculumVitaeOnSubmit(values, "Curriculum vitae updated successfully.");
     },
   });
 

@@ -1,17 +1,24 @@
 import React from "react";
 import { useFormik } from "formik";
 import schoolValidationShema from "./schoolValidationSchema";
-import schoolOnSubmitAdd from "./schoolOnSubmitAdd";
 import SchoolForm from "./SchoolForm";
 import schoolInitialValues from "./schoolInitialValues";
+import SchoolService from "./../../../../../../services/schoolService";
+import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
+import { useParams, useHistory } from "react-router-dom";
 
-export default function SchoolAddForm({ currentCurriculumVitaeId }) {
+export default function SchoolAddForm() {
+  const { currentCurriculumVitaeId } = useParams();
+  const history = useHistory();
+  
   let schoolAddFormik = useFormik({
     initialValues: schoolInitialValues,
     validationSchema: schoolValidationShema,
     onSubmit: (values) => {
-      schoolOnSubmitAdd(values, currentCurriculumVitaeId);
+      values.curriculumVitae.id = currentCurriculumVitaeId;
       console.log(values);
+      customOnSubmit(new SchoolService(), values, "School added successfully.");
+      history.push("/curriculumvitaelist");
     },
   });
 

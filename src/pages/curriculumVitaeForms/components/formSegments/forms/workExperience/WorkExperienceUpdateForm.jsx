@@ -1,17 +1,20 @@
 import React from "react";
 import { useFormik } from "formik";
 import workExperienceValidationShema from "./workExperienceValidationSchema";
-import workExperienceOnSubmitUpdate from "./workExperienceOnSubmitUpdate";
 import WorkExperienceForm from "./WorkExperienceForm";
+import WorkExperienceService from "./../../../../../../services/workExperienceService";
+import customOnSubmit from "./../../../../../../utilities/customOnSubmit";
 
 export default function WorkExperienceUpdateForm({ currentWorkExperience }) {
   let workExperienceUpdateFormik = useFormik({
     initialValues: currentWorkExperience,
     validationSchema: workExperienceValidationShema,
     onSubmit: (values) => {
-      workExperienceOnSubmitUpdate(
+      values.curriculumVitae.id = currentWorkExperience.curriculumVitae.id;
+      customOnSubmit(
+        new WorkExperienceService(),
         values,
-        currentWorkExperience.curriculumVitae.id
+        "Work experience updated successfully."
       );
     },
   });

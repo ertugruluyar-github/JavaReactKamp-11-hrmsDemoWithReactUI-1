@@ -1,19 +1,13 @@
 import CurriculumVitaeService from "../../../services/curriculumVitaeService";
 import { toast } from "react-toastify";
 
-const curriculumVitaeOnSubmitUpdate = (
-  values,
-  currentCurriculumVitaeId,
-  currentJobSeekerId
-) => {
+const curriculumVitaeOnSubmit = (service, values, message) => {
   let curriculumVitaeService = new CurriculumVitaeService();
-  values.jobSeeker.id = currentJobSeekerId;
-  values.id = currentCurriculumVitaeId;
   curriculumVitaeService
     .update(values)
     .then((response) => {
       if (response.status === 200) {
-        toast.success("Curriculum vitae updated successfully.");
+        toast.success(message);
       }
     })
     .catch((reason) => {
@@ -21,4 +15,4 @@ const curriculumVitaeOnSubmitUpdate = (
     });
 };
 
-export default curriculumVitaeOnSubmitUpdate;
+export default curriculumVitaeOnSubmit;
