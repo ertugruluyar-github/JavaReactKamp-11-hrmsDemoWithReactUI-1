@@ -5,6 +5,10 @@ export default class EmployerService {
   deployhost = "https://hrmsdemobackend.herokuapp.com";
   currenthost = this.deployhost;
 
+  get(id) {
+    return axios.get(this.currenthost + "/api/employers/get?id=" + id);
+  }
+
   getAll() {
     return axios.get(this.currenthost + "/api/employers/getall");
   }

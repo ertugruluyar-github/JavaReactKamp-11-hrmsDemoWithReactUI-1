@@ -11,7 +11,8 @@ import JobAdvertisementAddFormDashboard from "./layouts/dashboards/jobAdvertisem
 import CurriculumVitaeListDashboard from "./layouts/dashboards/curriculumVitaeList/CurriculumVitaeListDashboard";
 import LeftSideBar from "./layouts/sidebars/LeftSideBar";
 import { ToastContainer } from "react-toastify";
-import SystemEmployeeUpdateFormDashboard from './layouts/dashboards/systemEmployeeForms/SystemEmployeeUpdateFormDashboard';
+import SystemEmployeeUpdateFormDashboard from "./layouts/dashboards/systemEmployeeForms/SystemEmployeeUpdateFormDashboard";
+import EmployerUpdateFormDashboard from "./layouts/dashboards/employerForms/EmployerUpdateFormDashboard";
 
 function App() {
   return (
@@ -36,16 +37,22 @@ function App() {
 
               <Route
                 exact
+                path="/employers/:currentEmployerId/update"
+                component={EmployerUpdateFormDashboard}
+              />
+
+              <Route
+                exact
                 path="/jobseekers"
                 component={JobSeekerListDashboard}
               />
 
               <Route
                 exact
-                path="/curriculumvitaelist"
+                path="/curriculumvitaes"
                 component={CurriculumVitaeListDashboard}
               />
-              
+
               <Route
                 exact
                 path="/systememployees/:currentSystemEmployeeId/update"
