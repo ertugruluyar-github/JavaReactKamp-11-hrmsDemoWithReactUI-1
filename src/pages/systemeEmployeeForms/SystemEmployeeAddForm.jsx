@@ -27,8 +27,8 @@ export default function SystemEmployeeAddForm() {
     <SystemEmployeeForm
       headerIconName="id badge"
       headerContent="Add System Employee"
-      SubmitButtonIconName="save"
-      SubmitButtonText="Add"
+      submitButtonIconName="save"
+      submitButtonText="Add"
       formik={formik}
     />
   );

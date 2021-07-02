@@ -38,4 +38,18 @@ export default class CurriculumVitaeService {
       this.currenthost + "/api/curriculumvitaes/delete?id=" + id
     );
   }
+
+  uploadPhoto(file, curriculumVitaeId) {
+    return axios.post(
+      this.currenthost +
+        "/api/curriculumvitaes/uploadphoto?id=" +
+        curriculumVitaeId,
+      file,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }

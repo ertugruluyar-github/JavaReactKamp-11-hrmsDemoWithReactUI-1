@@ -21,7 +21,6 @@ export default function SchoolUpdateForm({ currentSchool }) {
 
   return (
     <SchoolForm
-      formKey="SchoolUpdateForm"
       headerIconName="graduation"
       headerContent="Update School"
       submitButtonIconName="save"

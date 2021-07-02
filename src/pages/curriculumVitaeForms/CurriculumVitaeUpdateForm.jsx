@@ -15,16 +15,22 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     jobSeeker: { id: currentCurriculumVitae.jobSeeker.id },
   };
 
+  let handleUploadPhoto = (file) => {
+    let curriculumVitaeService = new CurriculumVitaeService();
+    curriculumVitaeService.uploadPhoto(file, currentCurriculumVitae.id);
+  };
+
   const formik = useFormik({
     initialValues: currentInitialValues,
     validationSchema: curriculumVitaeValidationSchema,
     onSubmit: (values) => {
-      console.log(values)
+      console.log(values);
       customOnSubmitUpdate(
         new CurriculumVitaeService(),
         values,
         "Curriculum vitae updated successfully."
       );
+      handleUploadPhoto(values.photoLink);
     },
   });
 

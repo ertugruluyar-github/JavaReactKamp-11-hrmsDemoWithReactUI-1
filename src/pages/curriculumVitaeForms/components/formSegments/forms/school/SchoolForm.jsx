@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Segment, Icon, Button, Header } from "semantic-ui-react";
 
 export default function SchoolForm({
-  formKey,
   headerIconName,
   headerContent,
   submitButtonIconName,
@@ -17,7 +16,7 @@ export default function SchoolForm({
         icon={headerIconName}
         content={headerContent}
       />
-      <Form key={formKey}>
+      <Form>
         <Form.Group>
           <Form.Input
             id="name"

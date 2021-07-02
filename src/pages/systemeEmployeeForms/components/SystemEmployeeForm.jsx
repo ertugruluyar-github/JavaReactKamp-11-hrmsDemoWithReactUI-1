@@ -1,15 +1,27 @@
-import React from "react";
-import { Header, Segment, Form, Icon, Button } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Header, Segment, Form, Icon, Button, Label } from "semantic-ui-react";
 import PersonalInfoSegment from "./formSegments/PersonalInfoSegment";
 import UserInfoSegment from "./formSegments/UserInfoSegment";
+import systemEmployeeInitialValues from "./systemEmployeeInitialValues";
 
 export default function SystemEmployeeForm({
   headerIconName,
   headerContent,
-  SubmitButtonIconName,
-  SubmitButtonText,
+  submitButtonIconName,
+  submitButtonText,
   formik,
+  currentSystemEmployee,
 }) {
+  const [isVisibleInfo, setIsVisibleInfo] = useState(false);
+  let handleIsVisibleInfo = () => {
+    if (isVisibleInfo) {
+      formik.setValues(systemEmployeeInitialValues);
+      setIsVisibleInfo(false);
+    } else {
+      formik.setValues(currentSystemEmployee);
+      setIsVisibleInfo(true);
+    }
+  };
   return (
     <Segment padded raised>
       <Header
@@ -30,12 +42,24 @@ export default function SystemEmployeeForm({
             fluid
           >
             <Button.Content visible>
-              <Icon name={SubmitButtonIconName} />
+              <Icon name={submitButtonIconName} />
             </Button.Content>
-            <Button.Content hidden>{SubmitButtonText}</Button.Content>
+            <Button.Content hidden>{submitButtonText}</Button.Content>
           </Form.Button>
         </Segment>
       </Form>
+      <Label
+        onClick={handleIsVisibleInfo}
+        icon={
+          <Icon
+            name={isVisibleInfo ? "eye" : "eye slash"}
+            color={isVisibleInfo ? "blue" : "red"}
+            fitted
+          />
+        }
+        floating
+        circular
+      />
     </Segment>
   );
 }

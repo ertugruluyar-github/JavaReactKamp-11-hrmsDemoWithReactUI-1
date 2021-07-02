@@ -28,7 +28,6 @@ export default function SchoolAddForm() {
 
   return (
     <SchoolForm
-      formKey="SchoolAddForm"
       headerIconName="graduation"
       headerContent="Add School"
       submitButtonIconName="save"
