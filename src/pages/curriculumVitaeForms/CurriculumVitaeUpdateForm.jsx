@@ -14,10 +14,14 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
     photoLink: currentCurriculumVitae.photoLink,
     jobSeeker: { id: currentCurriculumVitae.jobSeeker.id },
   };
-
+  let data="";
   let handleUploadPhoto = (file) => {
     let curriculumVitaeService = new CurriculumVitaeService();
-    curriculumVitaeService.uploadPhoto(file, currentCurriculumVitae.id);
+    curriculumVitaeService
+      .uploadPhoto(file, currentCurriculumVitae.id)
+      .then((response) => data=response.data.data)
+      .catch((reason) => console.log(reason));
+      console.log(data)
   };
 
   const formik = useFormik({
@@ -30,6 +34,7 @@ export default function CurriculumVitaeUpdateForm({ currentCurriculumVitae }) {
         values,
         "Curriculum vitae updated successfully."
       );
+      console.log(values.photoLink);
       handleUploadPhoto(values.photoLink);
     },
   });

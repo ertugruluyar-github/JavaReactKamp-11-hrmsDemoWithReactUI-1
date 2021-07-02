@@ -47,7 +47,7 @@ export default class CurriculumVitaeService {
       file,
       {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json",//multipart/form-data
         },
       }
     );

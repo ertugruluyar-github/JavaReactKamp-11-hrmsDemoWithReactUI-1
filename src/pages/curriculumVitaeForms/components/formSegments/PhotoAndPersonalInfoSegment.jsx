@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  Segment,
-  Icon,
-  Grid,
-  Image,
-  Reveal,
-} from "semantic-ui-react";
+import { Segment, Icon, Grid, Image, Reveal } from "semantic-ui-react";
 import PersonalInfo from "./../../../curriculumVitaeDetailView/components/PersonalInfo";
+import PhotoUploadModal from "./modals/PhotoUploadModal";
 
 export default function PhotoAndPersonalInfoSegment({ formik }) {
   return (
@@ -16,22 +11,19 @@ export default function PhotoAndPersonalInfoSegment({ formik }) {
           <Grid.Column width={6}>
             <Reveal animated="fade">
               <Reveal.Content visible>
-                <Image size="medium" centered src={formik.values.photoLink} />
-                <input
-                  id="photoLink"
-                  name="photoLink"
-                  type="file"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  accept=".png, .jpg, .jpeg"
-                  //formEncType="multipart/file"
-                  datatype="multipart/file"
+                <Image
+                  size="medium"
+                  centered
+                  src={formik.values.photoLink}
+                  label={formik.values.photoLink}
                 />
+                <PhotoUploadModal formik={formik} />
               </Reveal.Content>
               <Reveal.Content hidden>
                 
               </Reveal.Content>
             </Reveal>
+            
           </Grid.Column>
           <Grid.Column width={10}>
             <PersonalInfo currentjobSeeker={formik.values.jobSeeker} />

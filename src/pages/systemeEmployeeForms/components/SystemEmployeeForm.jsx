@@ -52,8 +52,8 @@ export default function SystemEmployeeForm({
         onClick={handleIsVisibleInfo}
         icon={
           <Icon
-            name={isVisibleInfo ? "eye" : "eye slash"}
-            color={isVisibleInfo ? "blue" : "red"}
+            name={isVisibleInfo ? "eye slash" : "eye"}
+            color={isVisibleInfo ? "red" : "blue"}
             fitted
           />
         }

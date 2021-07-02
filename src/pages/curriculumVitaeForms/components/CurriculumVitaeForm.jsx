@@ -4,9 +4,9 @@ import PhotoAndPersonalInfoSegment from "./formSegments/PhotoAndPersonalInfoSegm
 import DescriptionSegment from "./formSegments/DescriptionSegment";
 import SocialMediaSegment from "./formSegments/SocialMediaSegment";
 import SchoolSegment from "./formSegments/SchoolSegment";
-import LanguageSegment from './formSegments/LanguageSegment';
-import WorkExperienceSegment from './formSegments/WorkExperienceSegment';
-import TechnologyKnowledgeSegment from './formSegments/TechnologyKnowledgeSegment';
+import LanguageSegment from "./formSegments/LanguageSegment";
+import WorkExperienceSegment from "./formSegments/WorkExperienceSegment";
+import TechnologyKnowledgeSegment from "./formSegments/TechnologyKnowledgeSegment";
 
 export default function CurriculumVitaeForm({
   headerIconName,
@@ -24,14 +24,18 @@ export default function CurriculumVitaeForm({
         icon={headerIconName}
         content={headerContent}
       />
-      <Form>
+      <form className="ui form" encType="multipart/form-data">
         <PhotoAndPersonalInfoSegment formik={formik} />
         <DescriptionSegment formik={formik} />
         <SocialMediaSegment formik={formik} />
         <SchoolSegment currentCurriculumVitaeId={currentCurriculumVitaeId} />
         <LanguageSegment currentCurriculumVitaeId={currentCurriculumVitaeId} />
-        <WorkExperienceSegment currentCurriculumVitaeId={currentCurriculumVitaeId} />
-        <TechnologyKnowledgeSegment currentCurriculumVitaeId={currentCurriculumVitaeId} />
+        <WorkExperienceSegment
+          currentCurriculumVitaeId={currentCurriculumVitaeId}
+        />
+        <TechnologyKnowledgeSegment
+          currentCurriculumVitaeId={currentCurriculumVitaeId}
+        />
         <Segment basic>
           <Form.Button
             type="button"
@@ -46,7 +50,7 @@ export default function CurriculumVitaeForm({
             <Button.Content hidden>{SubmitButtonText}</Button.Content>
           </Form.Button>
         </Segment>
-      </Form>
+      </form>
     </Segment>
   );
 }
