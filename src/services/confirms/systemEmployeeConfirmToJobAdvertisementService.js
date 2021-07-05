@@ -38,7 +38,12 @@ export default class SystemEmployeeConfirmToJobAdvertisementService {
   add(systemEmployeeConfirmToJobAdvertisement) {
     return axios.post(
       this.currenthost + "/api/systememployeeconfirmstojobadvertisement/add",
-      systemEmployeeConfirmToJobAdvertisement
+      JSON.stringify(systemEmployeeConfirmToJobAdvertisement),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
@@ -53,7 +58,12 @@ export default class SystemEmployeeConfirmToJobAdvertisementService {
   update(systemEmployeeConfirmToJobAdvertisement) {
     return axios.put(
       this.currenthost + "/api/systememployeeconfirmstojobadvertisement/update",
-      systemEmployeeConfirmToJobAdvertisement
+      JSON.stringify(systemEmployeeConfirmToJobAdvertisement),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
@@ -61,7 +71,12 @@ export default class SystemEmployeeConfirmToJobAdvertisementService {
     return axios.put(
       this.currenthost +
         "/api/systememployeeconfirmstojobadvertisement/confirmjobadvertisement",
-      jobAdvertisement
+      JSON.stringify(jobAdvertisement),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 }

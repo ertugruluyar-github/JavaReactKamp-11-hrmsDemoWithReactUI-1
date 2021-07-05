@@ -6,7 +6,9 @@ export default class SystemEmployeeConfirmToEmployerService {
   currenthost = this.deployhost;
 
   getAll() {
-    return axios.get(this.currenthost + "/api/systememployeeconfirmstoemployer/getall");
+    return axios.get(
+      this.currenthost + "/api/systememployeeconfirmstoemployer/getall"
+    );
   }
 
   get(id) {
@@ -32,9 +34,15 @@ export default class SystemEmployeeConfirmToEmployerService {
   }
 
   add(systemEmployeeConfirmToEmployer) {
+    console.log(JSON.stringify(systemEmployeeConfirmToEmployer))
     return axios.post(
       this.currenthost + "/api/systememployeeconfirmstoemployer/add",
-      systemEmployeeConfirmToEmployer
+      JSON.stringify(systemEmployeeConfirmToEmployer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
@@ -47,14 +55,25 @@ export default class SystemEmployeeConfirmToEmployerService {
   update(systemEmployeeConfirmToEmployer) {
     return axios.put(
       this.currenthost + "/api/systememployeeconfirmstoemployer/update",
-      systemEmployeeConfirmToEmployer
+      JSON.stringify(systemEmployeeConfirmToEmployer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
   confirmEmployer(employer) {
     return axios.put(
-      this.currenthost + "/api/systememployeeconfirmstoemployer/confirmemployer",
-      employer
+      this.currenthost +
+        "/api/systememployeeconfirmstoemployer/confirmemployer",
+      JSON.stringify(employer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 }

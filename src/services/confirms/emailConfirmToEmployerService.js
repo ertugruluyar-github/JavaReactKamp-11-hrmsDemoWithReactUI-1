@@ -31,10 +31,15 @@ export default class EmailConfirmToEmployerService {
     );
   }
 
-  add(emailConfirmToToEmployer) {
+  add(emailConfirmToEmployer) {
     return axios.post(
       this.currenthost + "/api/emailconfirmstoemployer/add",
-      emailConfirmToToEmployer
+      JSON.stringify(emailConfirmToEmployer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
@@ -47,14 +52,24 @@ export default class EmailConfirmToEmployerService {
   update(emailConfirmToEmployer) {
     return axios.put(
       this.currenthost + "/api/emailconfirmstoemployer/update",
-      emailConfirmToEmployer
+      JSON.stringify(emailConfirmToEmployer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 
   confirmEmployer(employer) {
     return axios.put(
       this.currenthost + "/api/emailconfirmstoemployer/confirmemployer",
-      employer
+      JSON.stringify(employer),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
   }
 }

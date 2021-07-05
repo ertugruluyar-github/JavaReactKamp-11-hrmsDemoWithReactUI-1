@@ -19,7 +19,7 @@ export default function EmployerAddForm() {
         values,
         "Employer added successfully."
       );
-      history.push("/employerlist");
+      history.push("/employers");
     },
   });
   return (
