@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { Segment, Form, Header, Button, Icon } from "semantic-ui-react";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import JobAdvertisementService from "../../services/jobAdvertisementService";
 import WorkingPlaceTypeFormSelect from "./components/WorkingPlaceTypeFormSelect";
 import WorkingTimeTypeFormSelect from "./components/WorkingTimeTypeFormSelect";
@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 export default function JobAdvertisementAddForm() {
   let jobAdvertisementService = new JobAdvertisementService();
   const history = useHistory();
+  const {currentEmployerId} = useParams();
 
   const dispatch = useDispatch();
 
@@ -75,7 +76,7 @@ export default function JobAdvertisementAddForm() {
     },
     validationSchema: ValidationSchema,
     onSubmit: (values) => {
-      values.employer.id = 1;
+      values.employer.id = currentEmployerId;
       console.log(values);
       addJobAdvertisements(values);
       handleAddToMyJobAdvertisement(values);

@@ -21,7 +21,7 @@ export default function LeftSideBar() {
         content="Employer Update Form"
         position="right center"
         trigger={
-          <Menu.Item as={NavLink} to="/employers/1/update" icon="building" />
+          <Menu.Item as={NavLink} to="/employers/22/update" icon="building" />
         }
       />
 
@@ -53,7 +53,7 @@ export default function LeftSideBar() {
         content="Job Advertisement Add Form"
         position="right center"
         trigger={
-          <Menu.Item as={NavLink} to="/jobadvertisementaddform" icon="tags" />
+          <Menu.Item as={NavLink} to="/16/jobadvertisementaddform" icon="tags" />
         }
       />
 

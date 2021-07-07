@@ -13,10 +13,8 @@ export default function EmployerUpdateForm() {
   //const history = useHistory();
   const { currentEmployerId } = useParams();
   const [currentEmployer, setCurrentEmployer] = useState({});
-  const [
-    isConfirmConfirmBySystemEmployee,
-    setIsConfirmConfirmBySystemEmployee,
-  ] = useState(null);
+  const [isConfirmBySystemEmployee, setIsConfirmBySystemEmployee] =
+    useState(null);
 
   useEffect(() => {
     let employerService = new EmployerService();
@@ -29,11 +27,11 @@ export default function EmployerUpdateForm() {
     let systemEmployeeConfirmToEmployerService =
       new SystemEmployeeConfirmToEmployerService();
     systemEmployeeConfirmToEmployerService
-      .getLatestConfirmByEmployerId(currentEmployerId)
+      .getByEmployerId(currentEmployerId)
       .then((result) =>
         result.data.data //confirm kaydı varsa
-          ? setIsConfirmConfirmBySystemEmployee(result.data.data.confirm)
-          : setIsConfirmConfirmBySystemEmployee(null)
+          ? setIsConfirmBySystemEmployee(result.data.data.confirmStatus)
+          : setIsConfirmBySystemEmployee(null)
       );
   }, [currentEmployerId]);
 
@@ -47,26 +45,37 @@ export default function EmployerUpdateForm() {
     let systemEmployeeConfirmToEmployerService =
       new SystemEmployeeConfirmToEmployerService();
     systemEmployeeConfirmToEmployerService
-      .getLatestConfirmByEmployerId(currentEmployerId)
+      .getByEmployerId(currentEmployerId)
       .then((result) => {
-        if (result.data?.data.confirm === false) {
+        if (result.data?.data.confirmStatus === false) {
           toast.info(
             "There is already an confirm proccess! Please wait to finished confirm proccess."
           );
         } else {
           let employerService = new EmployerService();
+          let currentSystemEmployeeConfirmToEmployerId = result.data.data.id;
           currentEmployer.employerLastUpdateJsonString = JSON.stringify(values);
+          currentEmployer.onUpdateProcessStatus = true;
+          currentEmployer.confirmStatus = false;
           employerService.update(currentEmployer).then((response) => {
             if (response.status === 200) {
               values.id = currentEmployer.id;
-              systemEmployeeConfirmToEmployerService.add({ employer: values });
-              //default confirm:false
+              systemEmployeeConfirmToEmployerService
+                .update({
+                  id: currentSystemEmployeeConfirmToEmployerId,
+                  employer: values,
+                })
+                .then((response) => {
+                  if (response.status === 200) {
+                    toast.info(
+                      "Bilgileriniz onay sürecine girmiştir, sistemimiz bilgilerinizi onayladıktan yeni bilgilerinizi görebilirisiniz."
+                    );
+                    //history.push("/employers");
+                  }
+                });
+              //default confirmStatus:false
               //values diyorum ama eski bilgileri alıyor, yani id ye bakıyor bir tek.
               console.log(JSON.stringify(values));
-              toast.info(
-                "Bilgileriniz onay sürecine girmiştir, sistemimiz bilgilerinizi onayladıktan yeni bilgilerinizi görebilirisiniz."
-              );
-              //history.push("/employers");
             }
           });
         }
@@ -75,7 +84,7 @@ export default function EmployerUpdateForm() {
 
   let handleView = () => {
     if (currentEmployer) {
-      if (isConfirmConfirmBySystemEmployee === false) {
+      if (isConfirmBySystemEmployee === false) {
         return (
           <>
             <EmployerForm

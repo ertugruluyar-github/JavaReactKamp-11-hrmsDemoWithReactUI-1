@@ -12,6 +12,7 @@ import EmployeePositionFormSelect2 from "./components/EmployeePositionFormSelect
 export default function JobAdvertisementAddForm2() {
   let jobAdvertisementService2 = new JobAdvertisementService2();
   const history = useHistory();
+  const {currentEmployerId} = useParams();
 
   let addJobAdvertisements = (values) => {
     jobAdvertisementService2
@@ -63,7 +64,7 @@ export default function JobAdvertisementAddForm2() {
     },
     validationSchema: ValidationSchema,
     onSubmit: (values) => {
-      values.employerId = 1;
+      values.employerId = currentEmployerId;
       console.log(values);
       addJobAdvertisements(values);
       history.push("/activejobadvertisements");

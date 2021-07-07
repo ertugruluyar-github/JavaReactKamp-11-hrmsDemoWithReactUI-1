@@ -17,14 +17,14 @@ export default class SystemEmployeeConfirmToEmployerService {
     );
   }
 
-  getAllByEmployerId(id) {
+  getByEmployerId(id) {
     return axios.get(
       this.currenthost +
-        "/api/systememployeeconfirmstoemployer/getallbyemployerid?id=" +
+        "/api/systememployeeconfirmstoemployer/getbyemployerid?id=" +
         id
     );
   }
-
+/*
   getLatestConfirmByEmployerId(id) {
     return axios.get(
       this.currenthost +
@@ -32,9 +32,8 @@ export default class SystemEmployeeConfirmToEmployerService {
         id
     );
   }
-
+*/
   add(systemEmployeeConfirmToEmployer) {
-    console.log(JSON.stringify(systemEmployeeConfirmToEmployer))
     return axios.post(
       this.currenthost + "/api/systememployeeconfirmstoemployer/add",
       JSON.stringify(systemEmployeeConfirmToEmployer),

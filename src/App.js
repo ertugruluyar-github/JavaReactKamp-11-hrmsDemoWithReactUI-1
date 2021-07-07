@@ -67,7 +67,7 @@ function App() {
 
               <Route
                 exact
-                path="/jobadvertisementaddform"
+                path="/:currentEmployerId/jobadvertisementaddform"
                 component={JobAdvertisementAddFormDashboard}
               />
             </Grid.Column>
