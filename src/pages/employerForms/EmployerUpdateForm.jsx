@@ -82,28 +82,22 @@ export default function EmployerUpdateForm() {
       });
   };
 
+  let handleShowOnUpdateProcessInfo = () => {
+    if (isConfirmBySystemEmployee === false) {
+      return (
+        <Header
+          color="orange"
+          content="Bilgileriniz onay sürecindedir, sistemimiz bilgilerinizi onayladıktan yeni bilgilerinizi görebilirisiniz."
+          as="h3"
+        />
+      );
+    }
+  };
+
   let handleView = () => {
     if (currentEmployer) {
-      if (isConfirmBySystemEmployee === false) {
-        return (
-          <>
-            <EmployerForm
-              headerIconName="building"
-              headerContent="Update Employer"
-              submitButtonIconName="save"
-              submitButtonText="Update"
-              formik={formik}
-              currentEmployer={currentEmployer}
-            />
-            <Header
-              color="orange"
-              content="Bilgileriniz onay sürecindedir, sistemimiz bilgilerinizi onayladıktan yeni bilgilerinizi görebilirisiniz."
-              as="h3"
-            />
-          </>
-        );
-      } else {
-        return (
+      return (
+        <>
           <EmployerForm
             headerIconName="building"
             headerContent="Update Employer"
@@ -112,8 +106,9 @@ export default function EmployerUpdateForm() {
             formik={formik}
             currentEmployer={currentEmployer}
           />
-        );
-      }
+          {handleShowOnUpdateProcessInfo()}
+        </>
+      );
     } else {
       return <Header color="orange" content="ERROR 404 NOT FOUND" as="h3" />;
     }
