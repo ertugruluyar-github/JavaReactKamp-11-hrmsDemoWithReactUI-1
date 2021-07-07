@@ -75,6 +75,7 @@ export default function EmployerUpdateForm() {
                 });
               //default confirmStatus:false
               //values diyorum ama eski bilgileri alıyor, yani id ye bakıyor bir tek.
+              //Yani employer: { id: currentEmployer.id } yazsak da olur.
               console.log(JSON.stringify(values));
             }
           });
